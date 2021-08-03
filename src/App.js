@@ -1,20 +1,23 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, Suspense } from 'react';
 import './App.scss';
 
-import { Canvas, useFrame } from "@react-three/fiber";
-import { softShadows, MeshWobbleMaterial, OrbitControls } from '@react-three/drei';
+import { Canvas, useFrame} from "@react-three/fiber";
+import { softShadows, MeshWobbleMaterial, OrbitControls, useTexture } from '@react-three/drei';
 
 import { useSpring, animated} from "@react-spring/three";
 
+import { EffectComposer, DepthOfField, Bloom, Noise, Vignette} from "@react-three/postprocessing";
 
+// Softens the Shadows
 softShadows();
+
 
 const SpinningMesh = ({position, args, color, speed}) => {
   const [expand, setExpand] = useState(false);
   const mesh = useRef(null);
   useFrame( () => {mesh.current.rotation.x = mesh.current.rotation.y += 0.01});
 
-
+  const [apandahTexture] = useTexture(["./Apandah.jpg"]);
   
 
   const props = useSpring({
@@ -24,7 +27,7 @@ const SpinningMesh = ({position, args, color, speed}) => {
   return(
       <animated.mesh onClick={() => setExpand(!expand)} scale={props.scale} castShadow position={position} ref={mesh}>
         <boxBufferGeometry attach="geometry" args={args} />
-        <MeshWobbleMaterial attach="material" color={color} speed={speed} factor={0.6} />
+        <meshStandardMaterial attach="material" map={apandahTexture} color={color} speed={speed} factor={0.6} />
       </animated.mesh>
   );
 }
@@ -37,7 +40,7 @@ function App() {
   return (
     <Canvas shadows colorManagement camera={{position: [-5, 2, 10], fov: 60}}>
 
-      <ambientLight intensity={0.3} />
+      <ambientLight intensity={0.2} />
 
       <directionalLight
       castShadow 
@@ -59,17 +62,24 @@ function App() {
         <mesh receiveShadow rotation={[-Math.PI/2, 0, 0]} position={[0, -3, 0]}>
           <planeBufferGeometry attach="geometry" args={[100, 100]} />
           <shadowMaterial attach="material" opacity={0.3} />
-
+          
         </mesh>
 
-        <SpinningMesh position={[0, 1, 0]} args={[3, 2, 1]} color="lightblue" speed={2}/>
-        <SpinningMesh position={[-2, 1, -5]} color="pink" speed={2}/>
-        <SpinningMesh position={[5, 1, -2]} color="pink" speed={2}/>
+        {/* <SpinningMesh position={[0, 1, 0]} args={[3, 2, 1]} color="lightblue" speed={2}/> */}
+        <Suspense fallback={null}>
+                {/* <MeCube /> */}
+                <SpinningMesh position={[0, 1, 0]} args={[2, 2, 2]} color="lightblue" speed={1}/>
+        </Suspense>
       </group>
 
 
-      
-      <OrbitControls />
+      <EffectComposer>
+        <DepthOfField focusDisctance={0} focalLength={0.07} bokehScale={2} height={480} />
+        {/* <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} /> */}
+        <Noise opacity={0.02} />
+        <Vignette eskil={false} offset={0.1} darkness={1.1} />
+      </EffectComposer>
+      {/* <OrbitControls /> */}
     </Canvas>
   );
 }
