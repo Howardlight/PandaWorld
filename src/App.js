@@ -9,7 +9,7 @@ import Footer from "./Footer";
 function App() {
   
   const [isVisible, setIsVisible] = useState(true);
-  const [isCircle, setIsCircle] = useState(true);
+  const [isCircle, setIsCircle] = useState(false);
 
   // TODO: Figure out Context, so that you don't have to pass states
   // from 1 component to the other,
