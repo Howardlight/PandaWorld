@@ -7,6 +7,8 @@ import { EffectComposer, DepthOfField, Noise, Vignette, SMAA} from "@react-three
 
 import SpinningMesh from "./SpinningMesh";
 
+
+
 // Softens the Shadows
 softShadows();
 
