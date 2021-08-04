@@ -3,16 +3,20 @@ $black: #464655;
 
 .Footer {
     position: absolute;
-    height: 200px;
+    height: 100px;
     width: 100%;
     padding: 24px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: $black;
+
+    // places it on top of the Canvas, making it interacteble
     z-index: 1;
 
-    margin-top: 760px;
+    background-color: #E6E4CE;
+
+    top: 90%;
     .logo,
     .episode {
       span {
