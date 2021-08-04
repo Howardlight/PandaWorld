@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/PandahWorld/static/css/main.6e14e736.chunk.css",
+    "main.js": "/PandahWorld/static/js/main.6b624fde.chunk.js",
+    "main.js.map": "/PandahWorld/static/js/main.6b624fde.chunk.js.map",
+    "runtime-main.js": "/PandahWorld/static/js/runtime-main.d6326f2e.js",
+    "runtime-main.js.map": "/PandahWorld/static/js/runtime-main.d6326f2e.js.map",
+    "static/js/2.54943878.chunk.js": "/PandahWorld/static/js/2.54943878.chunk.js",
+    "static/js/2.54943878.chunk.js.map": "/PandahWorld/static/js/2.54943878.chunk.js.map",
+    "index.html": "/PandahWorld/index.html",
+    "static/css/main.6e14e736.chunk.css.map": "/PandahWorld/static/css/main.6e14e736.chunk.css.map",
+    "static/js/2.54943878.chunk.js.LICENSE.txt": "/PandahWorld/static/js/2.54943878.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d6326f2e.js",
+    "static/js/2.54943878.chunk.js",
+    "static/css/main.6e14e736.chunk.css",
+    "static/js/main.6b624fde.chunk.js"
+  ]
+}
