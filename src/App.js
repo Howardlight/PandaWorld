@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import './App.scss';
 
-import MainCanvas from './MainCanvas';
-import Header from './Header';
-import Footer from "./Footer";
+import MainCanvas from './MainCanvas/MainCanvas';
+import Header from './Header/Header';
+import Footer from "./Footer/Footer";
 
 function App() {
   
