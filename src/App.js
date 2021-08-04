@@ -19,9 +19,9 @@ function App() {
     <>
       <Header /> 
 
-      <Footer visibility={ChangeVisibility}/>
+      <Footer toggleVisibility={ChangeVisibility} isVisible={isVisible}/>
 
-      <MainCanvas visibility={isVisible}/>
+      <MainCanvas isVisible={isVisible}/>
 
     </>
   );
