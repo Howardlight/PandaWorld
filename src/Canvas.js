@@ -65,4 +65,4 @@ const MainCanvas = () => {
     );
 }
 
-export default MainCanvas
+export default MainCanvas;

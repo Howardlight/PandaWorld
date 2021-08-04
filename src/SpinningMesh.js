@@ -10,7 +10,7 @@ const SpinningMesh = ({position, args}) => {
     const mesh = useRef(null);
     useFrame( () => {mesh.current.rotation.x = mesh.current.rotation.y += 0.007});
   
-    const [apandahTexture] = useTexture(["./Apandah.jpg"]);
+    const [apandahTexture] = useTexture([process.env.PUBLIC_URL + "/Apandah.jpg"]);
     
   
     const props = useSpring({
