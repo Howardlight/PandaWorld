@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 
-const SpinningMesh = ({position, args}) => {
+const ApandahMesh = ({position, args}) => {
     const [expand, setExpand] = useState(false);
     
 
@@ -25,4 +25,4 @@ const SpinningMesh = ({position, args}) => {
     );
 }
 
-export default SpinningMesh;
+export default ApandahMesh;

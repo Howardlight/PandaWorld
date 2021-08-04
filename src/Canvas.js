@@ -5,7 +5,7 @@ import { softShadows, OrbitControls } from '@react-three/drei';
 import { EffectComposer, DepthOfField, Noise, Vignette, SMAA} from "@react-three/postprocessing";
 
 
-import SpinningMesh from "./SpinningMesh";
+import ApandahMesh from "./ApandahMesh";
 
 
 
@@ -45,7 +45,7 @@ const MainCanvas = () => {
         </mesh>
 
         <Suspense fallback={null}>
-                <SpinningMesh position={[0, 1, 0]} args={[2, 2, 2]}/>
+                <ApandahMesh position={[0, 1, 0]} args={[2, 2, 2]}/>
 
                 <EffectComposer multisampling={0}>
                   <SMAA preset={2} />
