@@ -2,9 +2,9 @@ import React, { useRef, useState, Suspense } from 'react';
 
 import './App.scss';
 
-import MainCanvas from './Canvas';
+import MainCanvas from './MainCanvas';
 import Header from './Header';
-
+import Footer from "./Footer";
 
 function App() {
   
@@ -13,8 +13,10 @@ function App() {
     <>
       <Header /> 
 
+      <Footer />
+
       <MainCanvas />
-    
+
     </>
   );
 }

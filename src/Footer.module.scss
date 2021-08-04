@@ -1,9 +1,9 @@
 $black: #464655;
 
 
-Header {
+.Footer {
     position: absolute;
-    height: 108px;
+    height: 200px;
     width: 100%;
     padding: 24px 48px;
     display: flex;
@@ -11,6 +11,8 @@ Header {
     justify-content: space-between;
     color: $black;
     z-index: 1;
+
+    margin-top: 760px;
     .logo,
     .episode {
       span {
