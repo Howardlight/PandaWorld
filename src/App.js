@@ -1,4 +1,4 @@
-import React, { useRef, useState, Suspense } from 'react';
+import React, { useState } from 'react';
 
 import './App.scss';
 
@@ -9,19 +9,36 @@ import Footer from "./Footer";
 function App() {
   
   const [isVisible, setIsVisible] = useState(true);
+  const [isCircle, setIsCircle] = useState(true);
+
+  // TODO: Figure out Context, so that you don't have to pass states
+  // from 1 component to the other,
+  // ALERT: THIS WILL GET MESSY
 
   const ChangeVisibility = () => {
     setIsVisible(!isVisible);
-    console.log(isVisible);
   };
+
+  const toggleShape = () => {
+    setIsCircle(!isCircle);
+  }
 
   return (
     <>
       <Header /> 
 
-      <Footer toggleVisibility={ChangeVisibility} isVisible={isVisible}/>
+      <Footer
+      
+      // handles/toggles if shape is visible
+      toggleVisibility={ChangeVisibility} 
+      isVisible={isVisible}
+      
+      // toggles the shape from circle to Cube
+      toggleShape={toggleShape} 
+      shape={isCircle}
+      />
 
-      <MainCanvas isVisible={isVisible}/>
+      <MainCanvas isVisible={isVisible} isCircle={isCircle}/>
 
     </>
   );

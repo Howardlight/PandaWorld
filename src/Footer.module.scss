@@ -14,7 +14,7 @@ $black: #464655;
     // places it on top of the Canvas, making it interacteble
     z-index: 1;
 
-    background-color: #E6E4CE;
+    // background-color: #E6E4CE;
 
     top: 90%;
     .logo,
@@ -27,5 +27,7 @@ $black: #464655;
     }
     h4 {
         cursor: pointer;
+        // margin: auto;
+        // border: 2px solid $black;
     }
   }

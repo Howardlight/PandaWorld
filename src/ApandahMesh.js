@@ -3,9 +3,8 @@ import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 
-// import { useThree } from "@react-three/fiber";
 
-const ApandahMesh = ({ position, args }) => {
+const ApandahMesh = ({ position, args, isCircle }) => {
   // declare State hook
   const [expand, setExpand] = useState(false);
 
@@ -25,8 +24,12 @@ const ApandahMesh = ({ position, args }) => {
     scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
   });
 
-  
-
+  // handles shape of Mesh, Sphere or Box
+  function handleMeshShape() {   
+    if(isCircle) return <sphereBufferGeometry attach="geometry" args={[(args[0] /2), (args[1] * 15), (args[2] * 13)]} />;
+    // ^^^ NOTE: this formula might need changing in the future
+    else return <boxBufferGeometry attach="geometry" args={args} />;
+  }
 
 
   return (
@@ -37,7 +40,7 @@ const ApandahMesh = ({ position, args }) => {
       position={position}
       ref={mesh}
     >
-      <boxBufferGeometry attach="geometry" args={args} />
+      {handleMeshShape()}
       <meshStandardMaterial
         attach="material"
         map={apandahTexture}

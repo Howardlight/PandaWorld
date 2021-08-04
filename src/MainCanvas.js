@@ -1,4 +1,4 @@
-import React, { useRef, useState, Suspense } from "react";
+import React, { Suspense } from "react";
 
 import { Canvas } from "@react-three/fiber";
 import { softShadows, OrbitControls } from "@react-three/drei";
@@ -6,7 +6,7 @@ import {
   EffectComposer,
   DepthOfField,
   Noise,
-  Vignette,
+  // Vignette,
   SMAA,
 } from "@react-three/postprocessing";
 
@@ -15,7 +15,11 @@ import ApandahMesh from "./ApandahMesh";
 // Softens the Shadows
 softShadows();
 
-const MainCanvas = ({visibility}) => {
+
+const MainCanvas = ({isVisible, isCircle}) => {
+
+
+
   return (
     <Canvas shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
       <ambientLight intensity={0.2} />
@@ -48,7 +52,7 @@ const MainCanvas = ({visibility}) => {
         </mesh>
 
         <Suspense fallback={null}>
-          { visibility ? <ApandahMesh position={[0, 1, 0]} args={[2, 2, 2]} /> : ""}
+          { isVisible ? <ApandahMesh position={[0, 1, 0]} args={[2, 2, 2]} isCircle={isCircle} /> : ""}
 
           <EffectComposer multisampling={0}>
             <SMAA preset={2} />
