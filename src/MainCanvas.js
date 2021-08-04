@@ -15,7 +15,7 @@ import ApandahMesh from "./ApandahMesh";
 // Softens the Shadows
 softShadows();
 
-const MainCanvas = () => {
+const MainCanvas = ({visibility}) => {
   return (
     <Canvas shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
       <ambientLight intensity={0.2} />
@@ -48,7 +48,7 @@ const MainCanvas = () => {
         </mesh>
 
         <Suspense fallback={null}>
-          <ApandahMesh position={[0, 1, 0]} args={[2, 2, 2]} />
+          { visibility ? <ApandahMesh position={[0, 1, 0]} args={[2, 2, 2]} /> : ""}
 
           <EffectComposer multisampling={0}>
             <SMAA preset={2} />

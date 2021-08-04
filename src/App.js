@@ -8,14 +8,20 @@ import Footer from "./Footer";
 
 function App() {
   
+  const [isVisible, setIsVisible] = useState(true);
+
+  const ChangeVisibility = () => {
+    setIsVisible(!isVisible);
+    console.log(isVisible);
+  };
 
   return (
     <>
       <Header /> 
 
-      <Footer />
+      <Footer visibility={ChangeVisibility}/>
 
-      <MainCanvas />
+      <MainCanvas visibility={isVisible}/>
 
     </>
   );
