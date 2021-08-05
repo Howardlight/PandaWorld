@@ -4,6 +4,10 @@ import classes from "./Footer.module.scss";
 
 const Footer = ({toggleVisibility, isVisible, toggleShape, shape}) => {
 
+    // TODO: Add more Buttons that control Texture
+    // TODO: add Effects Buttons, maybe slider???
+    // TIP: Use Leva or react-three/gui
+
 
     return(
         <footer className={classes.Footer}>
