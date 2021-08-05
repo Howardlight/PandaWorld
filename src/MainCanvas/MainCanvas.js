@@ -75,9 +75,9 @@ const MainCanvas = ({isVisible, isCircle}) => {
 
       <Sky
         distance={450000}
-        sunPosition={[0, 1, 5]}
+        sunPosition={[5, 1, -6]}
         inclination={0}
-        azimuth={0.25}
+        azimuth={100} // what does this even do?????
         rayleigh={0.469} 
         // for more methods check : https://threejs.org/examples/webgl_shaders_sky.html
       />
