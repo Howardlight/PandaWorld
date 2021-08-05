@@ -1,4 +1,7 @@
 $black: #464655;
+$lightBlue: #79BEEE;
+$cottonCandy: #FFCAF6;
+$EggShell: #E6E4CE;
 
 
 Header {
@@ -11,7 +14,6 @@ Header {
     justify-content: space-between;
     color: $black;
     z-index: 1;
-    .logo,
     .episode {
       span {
         font-size: 1rem;
@@ -19,4 +21,39 @@ Header {
         letter-spacing: 0.04rem;
       }
     }
+
+    div {
+      // TODO: Make Button Styling
+      // GLOBAL
+      button {
+        // pushes it away a bit from 
+        // Pandah World
+        margin-right: 5px;
+
+        font-size: 16px;
+
+        // Main Elements
+        cursor: pointer;
+        background-color: $EggShell;
+        border: 1px solid;
+        color: $black;
+
+        // Animation and Opacity
+        opacity: 0.4;
+        filter: alpha(opacity=40);
+        transition: 0.25s;
+      }
+      // Styling on Clicking Button
+      button:active {
+        background-color: $black;
+        box-shadow: 0 5px #000;
+        transform: translateY(4px);
+      }
+      // Hover Effect
+      button:hover {
+        opacity: 1;
+        filter: alpha(opacity=100)
+      }
+    }
+
   }
