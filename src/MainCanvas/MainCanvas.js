@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 
 import { Canvas } from "@react-three/fiber";
-import { softShadows, OrbitControls } from "@react-three/drei";
+import { softShadows, OrbitControls, Sky } from "@react-three/drei";
 import {
   EffectComposer,
   DepthOfField,
@@ -46,7 +46,7 @@ const MainCanvas = ({isVisible, isCircle}) => {
           rotation={[-Math.PI / 2, 0, 0]}
           position={[0, -3, 0]}
         >
-          <planeBufferGeometry attach="geometry" args={[100, 100]} />
+          <planeBufferGeometry attach="geometry" args={[200, 200]} />
           <shadowMaterial attach="material" opacity={0.3} />
           <meshStandardMaterial attach="material" color={"#FFCAF6"} />
         </mesh>
@@ -72,6 +72,15 @@ const MainCanvas = ({isVisible, isCircle}) => {
         {/* <Vignette eskil={false} offset={0.05} darkness={1.1} /> */}
       </EffectComposer>
       <OrbitControls />
+
+      <Sky
+        distance={450000}
+        sunPosition={[0, 1, 5]}
+        inclination={0}
+        azimuth={0.25}
+        rayleigh={0.469} 
+        // for more methods check : https://threejs.org/examples/webgl_shaders_sky.html
+      />
     </Canvas>
   );
 };
