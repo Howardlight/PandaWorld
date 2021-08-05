@@ -1,4 +1,7 @@
 $black: #464655;
+$lightBlue: #79BEEE;
+$cottonCandy: #FFCAF6;
+$EggShell: #E6E4CE;
 
 
 .Footer {
@@ -25,9 +28,42 @@ $black: #464655;
         letter-spacing: 0.04rem;
       }
     }
-    h4 {
-        cursor: pointer;
-        // margin: auto;
-        // border: 2px solid $black;
+    // button {
+    //     
+
+    //     padding: 1px;
+    //     background-color: #000;
+
+    //     opacity: 0.4;
+    //     filter: alpha(opacity=40)
+    //     // margin: auto;
+    //     // border: 2px solid $black;
+    // }
+    button {
+
+      // Main Elements
+      cursor: pointer;
+      background-color: $EggShell;
+      border: 1px solid;
+      color: $black;
+
+      // Positioning, Sizing
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+
+      // Animation and Opacity
+      opacity: 0.4;
+      filter: alpha(opacity=40);
+      transition: 0.25s;
+
+
+      
+    }
+    button:hover {
+      opacity: 1;
+      filter: alpha(opacity=100)
     }
   }

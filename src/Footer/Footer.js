@@ -7,8 +7,8 @@ const Footer = ({toggleVisibility, isVisible, toggleShape, shape}) => {
 
     return(
         <footer className={classes.Footer}>
-            <h4 onClick={toggleVisibility} style={{marginRight: "auto"}}>{isVisible ? "Hide" : "Show"}</h4>
-            <h4 onClick={toggleShape}>{shape ? "Change to Cube" : "Change to Circle"}</h4>
+            <button onClick={toggleVisibility}>{isVisible ? "Hide" : "Show"}</button>
+            <button onClick={toggleShape}>{shape ? "Change to Cube" : "Change to Circle"}</button>
             {/* <h4>Button</h4> */}
         </footer>
     );
