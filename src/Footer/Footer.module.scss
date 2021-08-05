@@ -28,17 +28,6 @@ $EggShell: #E6E4CE;
         letter-spacing: 0.04rem;
       }
     }
-    // button {
-    //     
-
-    //     padding: 1px;
-    //     background-color: #000;
-
-    //     opacity: 0.4;
-    //     filter: alpha(opacity=40)
-    //     // margin: auto;
-    //     // border: 2px solid $black;
-    // }
     button {
 
       // Main Elements
@@ -58,10 +47,15 @@ $EggShell: #E6E4CE;
       opacity: 0.4;
       filter: alpha(opacity=40);
       transition: 0.25s;
-
-
       
     }
+    // Styling on Clicking Button
+    button:active {
+      background-color: $black;
+      box-shadow: 0 5px #000;
+      transform: translateY(4px);
+    }
+    // Hover Effect
     button:hover {
       opacity: 1;
       filter: alpha(opacity=100)
