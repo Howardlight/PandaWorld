@@ -26,7 +26,7 @@ const ApandahMesh = ({ position, args, isCircle }) => {
 
   // handles shape of Mesh, Sphere or Box
   function handleMeshShape() {   
-    if(isCircle) return <sphereBufferGeometry attach="geometry" args={[(args[0] /2), (args[1] * 15), (args[2] * 13)]} />;
+    if(isCircle) return <sphereBufferGeometry attach="geometry" args={[args[0], (args[1] * 15), (args[2] * 13)]}  />;
     // ^^^ NOTE: this formula might need changing in the future
     else return <boxBufferGeometry attach="geometry" args={args} />;
   }
@@ -45,6 +45,7 @@ const ApandahMesh = ({ position, args, isCircle }) => {
         attach="material"
         map={apandahTexture}
         factor={0.3}
+        roughness={0.7}
       />
     </a.mesh>
   );
