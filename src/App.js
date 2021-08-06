@@ -5,9 +5,10 @@ import './App.scss';
 import MainCanvas from './MainCanvas/MainCanvas';
 import Header from './Header/Header';
 import Footer from "./Footer/Footer";
+import SlideBar from "./Menu/SlideBar";
 
-import { slide as Menu } from "react-burger-menu";
-import "./Menu.module.scss";
+// import { slide as Menu } from "react-burger-menu";
+// import "./Menu.module.scss";
 
 
 function App() {
@@ -37,11 +38,7 @@ function App() {
     <>
       <Header toggleMenu={toggleMenu}/> 
 
-      <Menu customBurgerIcon={false} isOpen={isMenuOpen} id={"sidebar"}>
-        <h4 className="menu-item">Menu Item</h4>
-        <h4 className="menu-item">Use Texture</h4>
-        <h4 className="menu-item">Toggle Daytime</h4>
-      </Menu>
+      <SlideBar isMenuOpen={isMenuOpen} />
 
       <Footer
       
