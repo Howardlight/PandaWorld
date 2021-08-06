@@ -2,11 +2,11 @@ import React from "react";
 
 import classes from "./Header.module.scss";
 
-const Header = () => {
+const Header = ({toggleMenu}) => {
     return(
         <header className={classes.Header}>
             <div  style={{display: "flex", alignItems: "baseline"}}>
-                <button>Options</button>
+                <button onClick={toggleMenu}>Options</button>
                 <h4>Pandah World</h4>
             </div>
             <h4>By Ciel</h4>
