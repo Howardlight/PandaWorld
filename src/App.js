@@ -35,7 +35,7 @@ function App() {
     <>
       <Header toggleMenu={toggleMenu}/> 
 
-      <SlideBar isMenuOpen={isMenuOpen} />
+      <SlideBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
 
       <Footer
       

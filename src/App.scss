@@ -1,3 +1,8 @@
+$black: #464655;
+$lightBlue: #79BEEE;
+$cottonCandy: #FFCAF6;
+$EggShell: #E6E4CE;
+
 * {
   box-sizing: border-box;
 }
@@ -83,7 +88,7 @@ body {
 
 /* General sidebar styles */
 .bm-menu {
-  background: #000;
+  background: #464655;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
   overflow: unset !important ;
@@ -96,7 +101,7 @@ body {
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: #b8b7ad;
+  color: $EggShell; //#b8b7ad
 }
 
 /* Styling of overlay */
