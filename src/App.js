@@ -7,6 +7,7 @@ import Header from './Header/Header';
 import Footer from "./Footer/Footer";
 
 import { slide as Menu } from "react-burger-menu";
+import "./Menu.module.scss";
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
     <>
       <Header toggleMenu={toggleMenu}/> 
 
-      <Menu customBurgerIcon={false} isOpen={isMenuOpen}>
+      <Menu customBurgerIcon={false} isOpen={isMenuOpen} id={"sidebar"}>
         <h4 className="menu-item">Menu Item</h4>
         <h4 className="menu-item">Use Texture</h4>
         <h4 className="menu-item">Toggle Daytime</h4>
