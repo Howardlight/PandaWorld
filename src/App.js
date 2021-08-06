@@ -7,9 +7,6 @@ import Header from './Header/Header';
 import Footer from "./Footer/Footer";
 import SlideBar from "./Menu/SlideBar";
 
-// import { slide as Menu } from "react-burger-menu";
-// import "./Menu.module.scss";
-
 
 function App() {
   
