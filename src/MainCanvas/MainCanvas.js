@@ -27,7 +27,7 @@ const MainCanvas = ({isVisible, isCircle}) => {
       <directionalLight
         castShadow
         position={[0, 10, 0]}
-        intensity={1.5}
+        intensity={1}
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
         shadow-camera-far={50}
@@ -37,8 +37,8 @@ const MainCanvas = ({isVisible, isCircle}) => {
         shadow-camera-bottom={-10}
       />
 
-      <pointLight position={[-10, 0, -20]} intensity={0.5} />
-      <pointLight position={[0, -10, 0]} intensity={1.5} />
+      {/* <pointLight position={[-10, 0, -20]} intensity={0.5} />
+      <pointLight position={[0, -10, 0]} intensity={1.5} /> */}
 
       <group>
         <mesh
@@ -76,9 +76,9 @@ const MainCanvas = ({isVisible, isCircle}) => {
       <Sky
         distance={450000}
         sunPosition={[5, 1, -6]}
-        inclination={0}
+        Inclination={0}
         azimuth={100} // what does this even do?????
-        rayleigh={0.469} 
+        rayleigh={0.2}
         // for more methods check : https://threejs.org/examples/webgl_shaders_sky.html
       />
     </Canvas>
