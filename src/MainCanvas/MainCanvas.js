@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 
 import { Canvas } from "@react-three/fiber";
-import { softShadows, OrbitControls, Sky } from "@react-three/drei";
+import { softShadows, OrbitControls, CubeCamera, Sky } from "@react-three/drei";
 import {
   EffectComposer,
   DepthOfField,
@@ -11,6 +11,7 @@ import {
 } from "@react-three/postprocessing";
 
 import ApandahMesh from "./ApandahMesh";
+// import { CubeCamera, FogExp2 } from "three";
 
 // Softens the Shadows
 softShadows();
@@ -40,20 +41,26 @@ const MainCanvas = ({isVisible, isCircle, textureType}) => {
       {/* <pointLight position={[-10, 0, -20]} intensity={0.5} />
       <pointLight position={[0, -10, 0]} intensity={1.5} /> */}
 
+
+      <fog attach="fog" args={['#f0f0f0', 20, 40]} />
+
+      {/* <fogExp2 attach="fog" args={['#f0f0f0', 0.01]} /> */}
       <group>
+        
+
         <mesh
           receiveShadow
           rotation={[-Math.PI / 2, 0, 0]}
           position={[0, -3, 0]}
         >
-          <planeBufferGeometry attach="geometry" args={[200, 200]} />
+          <planeBufferGeometry attach="geometry" args={[250, 250]} />
           <shadowMaterial attach="material" opacity={0.3} />
           <meshStandardMaterial attach="material" color={"#FFCAF6"} />
         </mesh>
 
         <Suspense fallback={null}>
           { isVisible ? <ApandahMesh position={[0, 1, 0]} args={[2, 2, 2]} isCircle={isCircle} textureType={textureType} /> : ""}
-
+      
           <EffectComposer multisampling={0}>
             <SMAA preset={2} />
           </EffectComposer>
@@ -71,7 +78,7 @@ const MainCanvas = ({isVisible, isCircle, textureType}) => {
         <Noise opacity={0.02} />
         {/* <Vignette eskil={false} offset={0.05} darkness={1.1} /> */}
       </EffectComposer>
-      <OrbitControls />
+      <OrbitControls />      
 
       <Sky
         distance={450000}
