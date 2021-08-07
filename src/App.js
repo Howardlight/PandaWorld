@@ -15,6 +15,8 @@ function App() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+
+  const [textureType, setTextureType] = useState(0);
   // TODO: Figure out Context, so that you don't have to pass states
   // from 1 component to the other,
   // ALERT: THIS WILL GET MESSY
@@ -31,11 +33,15 @@ function App() {
     setIsMenuOpen(!isMenuOpen);
   }
 
+  const handleTextureChange = (index) => {
+    setTextureType(index);
+  }
+
   return (
     <>
       <Header toggleMenu={toggleMenu}/> 
 
-      <SlideBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+      <SlideBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} setTexture={handleTextureChange} textureType={textureType} />
 
       <Footer
       
@@ -48,7 +54,11 @@ function App() {
       shape={isCircle}
       />
 
-      <MainCanvas isVisible={isVisible} isCircle={isCircle}/>
+      <MainCanvas 
+      isVisible={isVisible} 
+      isCircle={isCircle}
+      textureType={textureType}
+      />
 
     </>
   );

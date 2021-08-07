@@ -58,6 +58,16 @@ body {
   transition: color 0.2s;
 }
 
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+// active component, refer to SlideBar
+.active {
+  color: $lightBlue;
+}
+
 .bm-item:hover {
   color: black;
 }

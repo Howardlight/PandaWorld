@@ -4,7 +4,7 @@ import { useTexture } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 
 
-const ApandahMesh = ({ position, args, isCircle }) => {
+const ApandahMesh = ({ position, args, isCircle, textureType }) => {
   // declare State hook
   const [expand, setExpand] = useState(false);
 
@@ -15,9 +15,14 @@ const ApandahMesh = ({ position, args, isCircle }) => {
   });
 
   // load Apandah Texture
-  const [apandahTexture] = useTexture([
+  const [ApandahTexture, AztroTexture, ShlattTexture, MikaTexture] = useTexture([
     process.env.PUBLIC_URL + "/Apandah.jpg",
+    process.env.PUBLIC_URL + "/Aztro.jpg",
+    process.env.PUBLIC_URL + "/Jschlatt.png",
+    process.env.PUBLIC_URL + "/Mikasacus.jpg",
   ]);
+
+  let textureArr = [ApandahTexture, AztroTexture, ShlattTexture, MikaTexture];
 
   // Load Animations with spring
   const props = useSpring({
@@ -43,7 +48,11 @@ const ApandahMesh = ({ position, args, isCircle }) => {
       {handleMeshShape()}
       <meshStandardMaterial
         attach="material"
-        map={apandahTexture}
+
+        map={textureArr[textureType]}
+
+
+
         factor={0.3}
         roughness={0.7}
       />
