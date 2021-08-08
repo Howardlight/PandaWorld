@@ -14,7 +14,6 @@ const Footer = ({toggleShape, shape}) => {
     const handleIsHidden = () => {
         if(isHidden === false) dispatch(hide());
         else dispatch(show());
-        console.log(isHidden); // remove this later
     }
 
 
