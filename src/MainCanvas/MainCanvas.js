@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-import { useSelector } from "react-redux";
 import { Canvas } from "@react-three/fiber";
 import { softShadows, OrbitControls, Sky } from "@react-three/drei";
 import {
