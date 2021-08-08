@@ -17,7 +17,7 @@ import ApandahMesh from "./ApandahMesh";
 softShadows();
 
 
-const MainCanvas = ({isVisible, isCircle, textureType}) => {
+const MainCanvas = ({isVisible, shape, textureType}) => {
 
 
 
@@ -59,7 +59,7 @@ const MainCanvas = ({isVisible, isCircle, textureType}) => {
         </mesh>
 
         <Suspense fallback={null}>
-          { isVisible ? <ApandahMesh position={[0, 1, 0]} args={[2, 2, 2]} isCircle={isCircle} textureType={textureType} /> : ""}
+          { isVisible ? <ApandahMesh position={[0, 1, 0]} args={[2, 2, 2]} shape={shape} textureType={textureType} /> : ""}
       
           <EffectComposer multisampling={0}>
             <SMAA preset={2} />

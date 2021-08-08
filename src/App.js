@@ -11,7 +11,7 @@ import SlideBar from "./Menu/SlideBar";
 function App() {
   
   const [isVisible, setIsVisible] = useState(true);
-  const [isCircle, setIsCircle] = useState(false);
+  const [shape, setShape] = useState(0);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -25,8 +25,8 @@ function App() {
     setIsVisible(!isVisible);
   };
 
-  const toggleShape = () => {
-    setIsCircle(!isCircle);
+  const toggleShape = (index) => {
+    setShape(index);
   }
 
   const toggleMenu = () => {
@@ -51,12 +51,12 @@ function App() {
       
       // toggles the shape from circle to Cube
       toggleShape={toggleShape} 
-      shape={isCircle}
+      shape={shape}
       />
 
       <MainCanvas 
       isVisible={isVisible} 
-      isCircle={isCircle}
+      shape={shape}
       textureType={textureType}
       />
 

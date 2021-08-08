@@ -4,7 +4,7 @@ import { useTexture } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 
 
-const ApandahMesh = ({ position, args, isCircle, textureType }) => {
+const ApandahMesh = ({ position, args, shape, textureType }) => {
   // declare State hook
   const [expand, setExpand] = useState(false);
 
@@ -34,9 +34,24 @@ const ApandahMesh = ({ position, args, isCircle, textureType }) => {
 
   // handles shape of Mesh, Sphere or Box
   function handleMeshShape() {   
-    if(isCircle) return <sphereBufferGeometry attach="geometry" args={[args[0], (args[1] * 15), (args[2] * 13)]}  />;
-    // ^^^ NOTE: this formula might need changing in the future
-    else return <boxBufferGeometry attach="geometry" args={args} />;
+    // if(isCircle) return <sphereBufferGeometry attach="geometry" args={[args[0], (args[1] * 15), (args[2] * 13)]}  />;
+    // // ^^^ NOTE: this formula might need changing in the future
+    // else return <boxBufferGeometry attach="geometry" args={args} />;
+    switch(shape) {
+      
+      case 0:
+        return <boxBufferGeometry attach="geometry" args={args} />;
+      case 1:
+        return <sphereBufferGeometry attach="geometry" args={[args[0], (args[1] * 15), (args[2] * 13)]} />;
+
+
+      // Current Way it is set up,
+      // if case is not recognized, do nothing
+      default:
+        break;
+    }
+
+
   }
 
 
