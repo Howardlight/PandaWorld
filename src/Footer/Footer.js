@@ -1,20 +1,19 @@
 import React from "react";
+import { useStore } from "../redux/store/ZustandStore";
 import classes from "./Footer.module.scss";
-// visibility-redux 
-import { useSelector, useDispatch } from "react-redux";
-import { show, hide } from "../redux/slices/hiddenSlice";
 
 
 const Footer = ({toggleShape, shape}) => {
 
-    const isHidden = useSelector((state) => state.hidden.value)
-    const dispatch = useDispatch();
     
     // handles Boolean Logic for Redux
     const handleIsHidden = () => {
-        if(isHidden === false) dispatch(hide());
-        else dispatch(show());
+        if(isHidden === false) hide();
+        else show();
     }
+    const isHidden = useStore(state => state.isHidden);
+    const hide = useStore(state => state.hideIsHidden);
+    const show = useStore(state => state.showIsHidden);
 
 
     const handleShape = () => {

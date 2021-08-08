@@ -11,8 +11,8 @@ import {
 import { BlendFunction } from "postprocessing";
 import MainMesh from "./MainMesh";
 
-import store from "../redux/store/store";
-import { Provider } from "react-redux";
+// Zustand, handles isHidden State
+import { useStore } from "../redux/store/ZustandStore";
 
 
 // Softens the Shadows
@@ -20,8 +20,8 @@ softShadows();
 
 const MainCanvas = ({shape}) => {
 
-  // visibility-redux
-  const isHidden = useSelector((state) => state.hidden.value);  
+  // visibility-Zustand
+  const   isHidden = useStore(state => state.isHidden);
 
   return (
     <Canvas shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
