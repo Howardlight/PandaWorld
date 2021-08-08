@@ -9,6 +9,7 @@ import {
   SMAA,
   Vignette,
 } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
 
 import MainMesh from "./MainMesh";
 
@@ -18,7 +19,7 @@ softShadows();
 
 const MainCanvas = ({isVisible, shape, textureType}) => {
 
-
+  
 
   return (
     <Canvas shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
@@ -53,16 +54,12 @@ const MainCanvas = ({isVisible, shape, textureType}) => {
         <Suspense fallback={null}>
 
           { isVisible ? <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} shape={shape} textureType={textureType} /> : ""}
-      
-          <EffectComposer multisampling={0}>
-            <SMAA preset={2} />
-          </EffectComposer>
 
         </Suspense>
 
       </group>
 
-      <EffectComposer>
+      <EffectComposer multisampling={0} disableNormalPass={true}>
         <DepthOfField
           focusDisctance={1}
           focalLength={0.07}
@@ -71,9 +68,18 @@ const MainCanvas = ({isVisible, shape, textureType}) => {
         />
         {/* <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} /> */}
         <Noise opacity={0.02} />
-        <Vignette eskil={false} offset={0.01} darkness={0.8} />
+
+
+        {/* TIP: SMAA Fucked up the Vignette last time, Watch out */}
+        <Vignette
+          offset={0.5} // vignette offset
+          darkness={0.5} // vignette darkness
+          eskil={false} // Eskil's vignette technique
+          blendFunction={BlendFunction.NORMAL} // blend mode
+        />
+
       </EffectComposer>
-      <OrbitControls />      
+      <OrbitControls />  
 
       {/* TODO: Lower the Sun's brightness */}
       <Sky
