@@ -9,7 +9,7 @@ import {
   SMAA,
 } from "@react-three/postprocessing";
 
-import ApandahMesh from "./ApandahMesh";
+import MainMesh from "./MainMesh";
 
 // Softens the Shadows
 softShadows();
@@ -57,7 +57,7 @@ const MainCanvas = ({isVisible, shape, textureType}) => {
         </mesh>
 
         <Suspense fallback={null}>
-          { isVisible ? <ApandahMesh position={[0, 1, 0]} args={[2, 2, 2]} shape={shape} textureType={textureType} /> : ""}
+          { isVisible ? <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} shape={shape} textureType={textureType} /> : ""}
       
           <EffectComposer multisampling={0}>
             <SMAA preset={2} />

@@ -5,7 +5,7 @@ import { useSpring, a } from "@react-spring/three";
 
 import textureArr from "./Meshes";
 
-const ApandahMesh = ({ position, args, shape, textureType }) => {
+const MainMesh = ({ position, args, shape, textureType }) => {
   
   // declare State hook
   const [expand, setExpand] = useState(false);
@@ -85,4 +85,4 @@ const ApandahMesh = ({ position, args, shape, textureType }) => {
   );
 };
 
-export default ApandahMesh;
+export default MainMesh;
