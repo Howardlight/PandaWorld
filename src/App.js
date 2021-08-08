@@ -12,7 +12,6 @@ function App() {
   
   const [shape, setShape] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [textureType, setTextureType] = useState(0);
 
 
   const toggleShape = (index) => {
@@ -23,10 +22,6 @@ function App() {
     setIsMenuOpen(!isMenuOpen);
   }
 
-  const handleTextureChange = (index) => {
-    setTextureType(index);
-  }
-  
   //ALERT: Canvas is dumb and loses context when passed to it by redux
   // CHECK DUSTAND to get around this dumb pitfall
 
@@ -41,9 +36,6 @@ function App() {
       isMenuOpen={isMenuOpen} 
       toggleMenu={toggleMenu} 
       
-      setTexture={handleTextureChange} 
-      textureType={textureType} 
-      
       />
 
       <Footer
@@ -55,7 +47,6 @@ function App() {
 
       <MainCanvas 
       shape={shape}
-      textureType={textureType}
       />
 
     </>

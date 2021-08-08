@@ -18,7 +18,7 @@ import { Provider } from "react-redux";
 // Softens the Shadows
 softShadows();
 
-const MainCanvas = ({shape, textureType}) => {
+const MainCanvas = ({shape}) => {
 
   // visibility-redux
   const isHidden = useSelector((state) => state.hidden.value);  
@@ -55,7 +55,7 @@ const MainCanvas = ({shape, textureType}) => {
 
         <Suspense fallback={null}>
 
-          { isHidden ? "" : <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} shape={shape} textureType={textureType} /> }
+          { isHidden ? "" : <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} shape={shape} /> }
 
         </Suspense>
 

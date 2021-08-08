@@ -8,7 +8,7 @@ import textureArr from "./Meshes";
 import { useSelector } from "react-redux";
 import { useStore } from "../redux/store/ZustandStore";
 
-const MainMesh = ({ position, args, shape, textureType }) => {
+const MainMesh = ({ position, args, shape}) => {
 
   // const texture = useSelector((state) => state.texture.value)
   // const isHidden = useSelector((state) => state.hidden.value);

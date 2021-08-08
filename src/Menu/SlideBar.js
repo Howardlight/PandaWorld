@@ -6,13 +6,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { setToAmount } from "../redux/slices/textureSlice";
 import { useStore } from "../redux/store/ZustandStore";
 
-const SideBar = ({isMenuOpen, toggleMenu, textureType}) => {
+const SideBar = ({isMenuOpen, toggleMenu}) => {
 
+    // oww my brain
     const texture = useStore(state => state.texture);
     const setToAmount = useStore(state => state.setToAmount);    
 
     // state used to keep up with active component
-    const [isActive, setIsActive] = useState(textureType); // mapped to current active texture, cleaner this way
+    const [isActive, setIsActive] = useState(texture); // mapped to current active texture, cleaner this way
     
     // Maps Names from textureArray from Meshes.js
     let nameArr = []
