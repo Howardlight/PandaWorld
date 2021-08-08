@@ -38,6 +38,7 @@ body {
 }
 
 
+// SLIDEBAR CSS
 
 // I have no idea how this mess of a component works
 // but its styling only works here i guess
@@ -56,6 +57,16 @@ body {
   margin-bottom: 10px;
   color: $black;
   transition: color 0.2s;
+
+  outline: none; 
+  // Removes The Border on Chrome
+  // Might be Smarter to port this into its own CSS Class
+  // TODO: Add a border on the left of the Selected Type, check Refactoring UI book
+}
+
+
+.section-title {
+  display: inline-block !important; // overrides display: block;
 }
 
 

@@ -20,7 +20,9 @@ const SideBar = ({isMenuOpen, toggleMenu, setTexture, textureType}) => {
       <Menu customBurgerIcon={false} isOpen={isMenuOpen} onClose={toggleMenu} className="sidebar">
 
         {/* TEXTURES START */}
-        <h4 className="menu-item" style={{fontWeight: "800"}}>Textures</h4>
+
+        {/* textures Changes opacity on hover, Fix that */}
+        <h4 className="menu-item section-title" style={{fontWeight: "800"}}>Textures</h4>
         <br />
         {
             // Way easier to implement than i thought lol
@@ -31,6 +33,7 @@ const SideBar = ({isMenuOpen, toggleMenu, setTexture, textureType}) => {
                 );
             })
         }
+        
         {/* TEXTURES END */}
 
     </Menu>
