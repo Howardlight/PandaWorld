@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-
+import { useSelector } from "react-redux";
 import { Canvas } from "@react-three/fiber";
 import { softShadows, OrbitControls, Sky } from "@react-three/drei";
 import {
@@ -10,16 +10,16 @@ import {
   Vignette,
 } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
-
 import MainMesh from "./MainMesh";
+
 
 // Softens the Shadows
 softShadows();
 
+const MainCanvas = ({shape, textureType}) => {
 
-const MainCanvas = ({isVisible, shape, textureType}) => {
-
-  
+  // visibility-redux
+  const isHidden = useSelector((state) => state.hidden.value);  
 
   return (
     <Canvas shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
@@ -53,7 +53,7 @@ const MainCanvas = ({isVisible, shape, textureType}) => {
 
         <Suspense fallback={null}>
 
-          { isVisible ? <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} shape={shape} textureType={textureType} /> : ""}
+          { isHidden ? "" : <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} shape={shape} textureType={textureType} /> }
 
         </Suspense>
 
