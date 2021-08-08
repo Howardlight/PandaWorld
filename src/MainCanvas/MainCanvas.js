@@ -7,6 +7,7 @@ import {
   DepthOfField,
   Noise,
   SMAA,
+  Vignette,
 } from "@react-three/postprocessing";
 
 import MainMesh from "./MainMesh";
@@ -41,28 +42,24 @@ const MainCanvas = ({isVisible, shape, textureType}) => {
 
 
       <fog attach="fog" args={['#f0f0f0', 20, 40]} />
-
-      {/* <fogExp2 attach="fog" args={['#f0f0f0', 0.01]} /> */}
       <group>
-        
 
-        <mesh
-          receiveShadow
-          rotation={[-Math.PI / 2, 0, 0]}
-          position={[0, -3, 0]}
-        >
+        <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -3, 0]}>
           <planeBufferGeometry attach="geometry" args={[250, 250]} />
           <shadowMaterial attach="material" opacity={0.3} />
           <meshStandardMaterial attach="material" color={"#FFCAF6"} />
         </mesh>
 
         <Suspense fallback={null}>
+
           { isVisible ? <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} shape={shape} textureType={textureType} /> : ""}
       
           <EffectComposer multisampling={0}>
             <SMAA preset={2} />
           </EffectComposer>
+
         </Suspense>
+
       </group>
 
       <EffectComposer>
@@ -74,7 +71,7 @@ const MainCanvas = ({isVisible, shape, textureType}) => {
         />
         {/* <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} /> */}
         <Noise opacity={0.02} />
-        {/* <Vignette eskil={false} offset={0.05} darkness={1.1} /> */}
+        <Vignette eskil={false} offset={0.01} darkness={0.8} />
       </EffectComposer>
       <OrbitControls />      
 
