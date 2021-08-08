@@ -11,7 +11,7 @@ const Footer = ({toggleVisibility, isVisible, toggleShape, shape}) => {
     // All components that will act as a UI MUST be overlapped over the canvas
 
     const handleShape = () => {
-        if(shape == 0) toggleShape(1);
+        if(shape === 0) toggleShape(1);
         else toggleShape(0);
     } 
 
