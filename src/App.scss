@@ -69,6 +69,10 @@ body {
   display: inline-block !important; // overrides display: block;
 }
 
+.section-title:hover {
+  color: $black !important;
+}
+
 
 .clickable:hover {
   cursor: pointer;
@@ -80,7 +84,8 @@ body {
 }
 
 .bm-item:hover {
-  color: black;
+  color: $lightBlue;
+  // TODO: add BorderBox here
 }
 
 .bm-burger-button {
