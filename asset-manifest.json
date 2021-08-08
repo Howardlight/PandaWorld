@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/PandahWorld/static/css/main.0d9ce1a8.chunk.css",
-    "main.js": "/PandahWorld/static/js/main.33c95cb4.chunk.js",
-    "main.js.map": "/PandahWorld/static/js/main.33c95cb4.chunk.js.map",
+    "main.css": "/PandahWorld/static/css/main.536b9f68.chunk.css",
+    "main.js": "/PandahWorld/static/js/main.1f492e15.chunk.js",
+    "main.js.map": "/PandahWorld/static/js/main.1f492e15.chunk.js.map",
     "runtime-main.js": "/PandahWorld/static/js/runtime-main.d6326f2e.js",
     "runtime-main.js.map": "/PandahWorld/static/js/runtime-main.d6326f2e.js.map",
-    "static/js/2.8daf6704.chunk.js": "/PandahWorld/static/js/2.8daf6704.chunk.js",
-    "static/js/2.8daf6704.chunk.js.map": "/PandahWorld/static/js/2.8daf6704.chunk.js.map",
+    "static/js/2.7ae74d38.chunk.js": "/PandahWorld/static/js/2.7ae74d38.chunk.js",
+    "static/js/2.7ae74d38.chunk.js.map": "/PandahWorld/static/js/2.7ae74d38.chunk.js.map",
     "index.html": "/PandahWorld/index.html",
-    "static/css/main.0d9ce1a8.chunk.css.map": "/PandahWorld/static/css/main.0d9ce1a8.chunk.css.map",
-    "static/js/2.8daf6704.chunk.js.LICENSE.txt": "/PandahWorld/static/js/2.8daf6704.chunk.js.LICENSE.txt"
+    "static/css/main.536b9f68.chunk.css.map": "/PandahWorld/static/css/main.536b9f68.chunk.css.map",
+    "static/js/2.7ae74d38.chunk.js.LICENSE.txt": "/PandahWorld/static/js/2.7ae74d38.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d6326f2e.js",
-    "static/js/2.8daf6704.chunk.js",
-    "static/css/main.0d9ce1a8.chunk.css",
-    "static/js/main.33c95cb4.chunk.js"
+    "static/js/2.7ae74d38.chunk.js",
+    "static/css/main.536b9f68.chunk.css",
+    "static/js/main.1f492e15.chunk.js"
   ]
 }
