@@ -5,8 +5,14 @@ import { useSpring, a } from "@react-spring/three";
 
 import textureArr from "./Meshes";
 
+import { useSelector } from "react-redux";
+import { useStore } from "../redux/store/ZustandStore";
+
 const MainMesh = ({ position, args, shape, textureType }) => {
-  
+
+  // const texture = useSelector((state) => state.texture.value)
+  // const isHidden = useSelector((state) => state.hidden.value);
+  const texture = useStore(state => state.texture);
   // declare State hook
   const [expand, setExpand] = useState(false);
 
@@ -72,8 +78,7 @@ const MainMesh = ({ position, args, shape, textureType }) => {
         attach="material"
 
         map={
-          AvailableTextures[textureType]
-          // MeshArr[textureType]
+          AvailableTextures[texture]
         }
 
 

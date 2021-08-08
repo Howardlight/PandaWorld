@@ -9,7 +9,7 @@ const Footer = ({toggleShape, shape}) => {
 
     const isHidden = useSelector((state) => state.hidden.value)
     const dispatch = useDispatch();
-
+    
     // handles Boolean Logic for Redux
     const handleIsHidden = () => {
         if(isHidden === false) dispatch(hide());

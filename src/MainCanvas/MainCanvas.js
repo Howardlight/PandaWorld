@@ -11,6 +11,9 @@ import {
 import { BlendFunction } from "postprocessing";
 import MainMesh from "./MainMesh";
 
+import store from "../redux/store/store";
+import { Provider } from "react-redux";
+
 
 // Softens the Shadows
 softShadows();

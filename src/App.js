@@ -11,14 +11,9 @@ import SlideBar from "./Menu/SlideBar";
 function App() {
   
   const [shape, setShape] = useState(0);
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-
   const [textureType, setTextureType] = useState(0);
-  // TODO: Figure out Context, so that you don't have to pass states
-  // from 1 component to the other,
-  // ALERT: THIS WILL GET MESSY
+
 
   const toggleShape = (index) => {
     setShape(index);
@@ -31,6 +26,10 @@ function App() {
   const handleTextureChange = (index) => {
     setTextureType(index);
   }
+  
+  //ALERT: Canvas is dumb and loses context when passed to it by redux
+  // CHECK DUSTAND to get around this dumb pitfall
+
 
   return (
     <>
