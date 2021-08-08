@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import './App.scss';
 
 import MainCanvas from './MainCanvas/MainCanvas';
@@ -10,14 +9,7 @@ import SlideBar from "./Menu/SlideBar";
 
 function App() {
   
-  const [shape, setShape] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-
-  const toggleShape = (index) => {
-    setShape(index);
-  }
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   }
@@ -38,16 +30,9 @@ function App() {
       
       />
 
-      <Footer
-      
-      // toggles the shape from circle to Cube
-      toggleShape={toggleShape} 
-      shape={shape}
-      />
+      <Footer />
 
-      <MainCanvas 
-      shape={shape}
-      />
+      <MainCanvas />
 
     </>
   );

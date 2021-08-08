@@ -6,10 +6,11 @@ import { useSpring, a } from "@react-spring/three";
 import textureArr from "./Meshes";
 import { useStore } from "../redux/store/ZustandStore";
 
-const MainMesh = ({ position, args, shape}) => {
+const MainMesh = ({ position, args}) => {
 
 
   const texture = useStore(state => state.texture);
+  const shape = useStore(state => state.shape);
   
   // declare State hook
   const [expand, setExpand] = useState(false);
