@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
 import textureArr from "../MainCanvas/Meshes";
-
-import { useSelector, useDispatch } from "react-redux";
-import { setToAmount } from "../redux/slices/textureSlice";
 import { useStore } from "../redux/store/ZustandStore";
 
 const SideBar = ({isMenuOpen, toggleMenu}) => {
 
     // oww my brain
     const texture = useStore(state => state.texture);
-    const setToAmount = useStore(state => state.setToAmount);    
+    const setToAmountTexture = useStore(state => state.setToAmountTexture);    
 
     // state used to keep up with active component
     const [isActive, setIsActive] = useState(texture); // mapped to current active texture, cleaner this way
@@ -38,7 +35,7 @@ const SideBar = ({isMenuOpen, toggleMenu}) => {
             nameArr.map(function(person, index) {
                 const checkIfActive = isActive === index ? "active" : "";
                 return (
-                    <h4 className={["menu-item", "clickable", checkIfActive].join(" ")} key={index} onClick={() => {setToAmount(index); setIsActive(index);} }>{person}</h4>
+                    <h4 className={["menu-item", "clickable", checkIfActive].join(" ")} key={index} onClick={() => {setToAmountTexture(index); setIsActive(index);} }>{person}</h4>
                 );
             })
         }

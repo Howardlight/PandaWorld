@@ -2,9 +2,10 @@ import create from "zustand";
 
 export const useStore = create(set => ({
 
+    // related to texture loading
     texture: 0,
-    // hide: () => set(state => ({ isHidden: true})),
-    // show: () => set(state => ({ isHidden: false})),
-    setToAmount: (input) => set(state => ({ texture: input }))
+    setToAmountTexture: (input) => set(state => ({ texture: input }))
 
+
+    
 }));
