@@ -80,6 +80,7 @@ const MainCanvas = ({isVisible, isCircle, textureType}) => {
       </EffectComposer>
       <OrbitControls />      
 
+      {/* TODO: Lower the Sun's brightness */}
       <Sky
         distance={450000}
         sunPosition={[5, 1, -6]}

@@ -16,6 +16,8 @@ const SideBar = ({isMenuOpen, toggleMenu, setTexture, textureType}) => {
     // TODO: Add animations for when texture changes,
     // Check Drei or PostProcessing, maybe Fiber
 
+    // TODO: Slide Animation does not occur consistently, Fix that
+
     return(
       <Menu customBurgerIcon={false} isOpen={isMenuOpen} onClose={toggleMenu} className="sidebar">
 

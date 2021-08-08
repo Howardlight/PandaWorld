@@ -29,6 +29,9 @@ const ApandahMesh = ({ position, args, isCircle, textureType }) => {
     scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
   });
 
+  // TODO: Add More Shapes
+  // TODO: Maybe port this to the Slidebar?
+
   // handles shape of Mesh, Sphere or Box
   function handleMeshShape() {   
     if(isCircle) return <sphereBufferGeometry attach="geometry" args={[args[0], (args[1] * 15), (args[2] * 13)]}  />;
