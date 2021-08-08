@@ -3,6 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 
+import textureArr from "./Meshes";
 
 const ApandahMesh = ({ position, args, shape, textureType }) => {
   // declare State hook
@@ -14,29 +15,33 @@ const ApandahMesh = ({ position, args, shape, textureType }) => {
     mesh.current.rotation.x = mesh.current.rotation.y += 0.007;
   });
 
-  // load Apandah Texture
+
+
+  // load All Textures Texture
+  // CANNOT BE AUTOMATICALLY LOADED
+  // useTexture does not work in loops :/
   const [ApandahTexture, AztroTexture, ShlattTexture, MikaTexture] = useTexture([
-    process.env.PUBLIC_URL + "/Apandah.jpg",
-    process.env.PUBLIC_URL + "/Aztro.jpg",
-    process.env.PUBLIC_URL + "/Jschlatt.png",
-    process.env.PUBLIC_URL + "/Mikasacus.jpg",
+    process.env.PUBLIC_URL + textureArr[0].fileName,
+    process.env.PUBLIC_URL + textureArr[1].fileName,
+    process.env.PUBLIC_URL + textureArr[2].fileName,
+    process.env.PUBLIC_URL + textureArr[3].fileName,
   ]);
 
-  let textureArr = [ApandahTexture, AztroTexture, ShlattTexture, MikaTexture];
+  let MeshArr = [ApandahTexture, AztroTexture, ShlattTexture, MikaTexture];
+
 
   // Load Animations with spring
   const props = useSpring({
     scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
   });
 
+
   // TODO: Add More Shapes
   // TODO: Maybe port this to the Slidebar?
 
   // handles shape of Mesh, Sphere or Box
   function handleMeshShape() {   
-    // if(isCircle) return <sphereBufferGeometry attach="geometry" args={[args[0], (args[1] * 15), (args[2] * 13)]}  />;
-    // // ^^^ NOTE: this formula might need changing in the future
-    // else return <boxBufferGeometry attach="geometry" args={args} />;
+
     switch(shape) {
       
       case 0:
@@ -67,7 +72,7 @@ const ApandahMesh = ({ position, args, shape, textureType }) => {
       <meshStandardMaterial
         attach="material"
 
-        map={textureArr[textureType]}
+        map={MeshArr[textureType]}
 
 
 
