@@ -41,7 +41,16 @@ function App() {
     <>
       <Header toggleMenu={toggleMenu}/> 
 
-      <SlideBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} setTexture={handleTextureChange} textureType={textureType} />
+      <SlideBar
+      
+      
+      isMenuOpen={isMenuOpen} 
+      toggleMenu={toggleMenu} 
+      
+      setTexture={handleTextureChange} 
+      textureType={textureType} 
+      
+      />
 
       <Footer
       
