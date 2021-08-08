@@ -1,17 +1,15 @@
 import React, { Suspense } from "react";
 
 import { Canvas } from "@react-three/fiber";
-import { softShadows, OrbitControls, CubeCamera, Sky } from "@react-three/drei";
+import { softShadows, OrbitControls, Sky } from "@react-three/drei";
 import {
   EffectComposer,
   DepthOfField,
   Noise,
-  // Vignette,
   SMAA,
 } from "@react-three/postprocessing";
 
 import ApandahMesh from "./ApandahMesh";
-// import { CubeCamera, FogExp2 } from "three";
 
 // Softens the Shadows
 softShadows();

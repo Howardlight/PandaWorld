@@ -1,4 +1,3 @@
-import React from "react";
 
 
 // Array that contains all the meshes
