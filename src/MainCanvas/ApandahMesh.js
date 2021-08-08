@@ -6,6 +6,7 @@ import { useSpring, a } from "@react-spring/three";
 import textureArr from "./Meshes";
 
 const ApandahMesh = ({ position, args, shape, textureType }) => {
+  
   // declare State hook
   const [expand, setExpand] = useState(false);
 
@@ -16,18 +17,19 @@ const ApandahMesh = ({ position, args, shape, textureType }) => {
   });
 
 
+  // This might not be very Optimized
+  // TODO: Check drei for possible optimizations 
+  // Creates 2 Arrays, one with the file names,
+  // the other with the Paths
+  let AvailableTextures = [];
+  let AvailableTexturesPaths = [];
+  for(let value of textureArr){
+    AvailableTextures.push(value.name + "Texture");
+    AvailableTexturesPaths.push(process.env.PUBLIC_URL + value.fileName);
+  }
+  
+  AvailableTextures = useTexture(AvailableTexturesPaths);
 
-  // load All Textures Texture
-  // CANNOT BE AUTOMATICALLY LOADED
-  // useTexture does not work in loops :/
-  const [ApandahTexture, AztroTexture, ShlattTexture, MikaTexture] = useTexture([
-    process.env.PUBLIC_URL + textureArr[0].fileName,
-    process.env.PUBLIC_URL + textureArr[1].fileName,
-    process.env.PUBLIC_URL + textureArr[2].fileName,
-    process.env.PUBLIC_URL + textureArr[3].fileName,
-  ]);
-
-  let MeshArr = [ApandahTexture, AztroTexture, ShlattTexture, MikaTexture];
 
 
   // Load Animations with spring
@@ -55,10 +57,7 @@ const ApandahMesh = ({ position, args, shape, textureType }) => {
       default:
         break;
     }
-
-
   }
-
 
   return (
     <a.mesh
@@ -72,7 +71,10 @@ const ApandahMesh = ({ position, args, shape, textureType }) => {
       <meshStandardMaterial
         attach="material"
 
-        map={MeshArr[textureType]}
+        map={
+          AvailableTextures[textureType]
+          // MeshArr[textureType]
+        }
 
 
 
