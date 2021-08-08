@@ -6,7 +6,6 @@ import {
   EffectComposer,
   DepthOfField,
   Noise,
-  SMAA,
   Vignette,
 } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
