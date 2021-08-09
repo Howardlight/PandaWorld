@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
 import textureArr from "../MainCanvas/Meshes";
+import Shapes from "../MainCanvas/Shapes";
 import { useStore } from "../redux/store/ZustandStore";
 
 const SideBar = ({isMenuOpen, toggleMenu}) => {
@@ -9,9 +10,15 @@ const SideBar = ({isMenuOpen, toggleMenu}) => {
     const texture = useStore(state => state.texture);
     const setToAmountTexture = useStore(state => state.setToAmountTexture);    
 
-    // state used to keep up with active component
-    const [isActive, setIsActive] = useState(texture); // mapped to current active texture, cleaner this way
-    
+    const shape = useStore(state => state.shape)
+    const setToShape = useStore(state => state.setToShape)
+
+
+    // States used to keep up with active component
+    const [isPersonActive, setIsPersonActive] = useState(texture); // mapped to current active texture, cleaner this way
+    const [isShapeActive, setIsShapeActive] = useState(shape); // mapped to current active texture, cleaner this way
+
+
     // Maps Names from textureArray from Meshes.js
     let nameArr = []
     for(let value of textureArr) {
@@ -33,14 +40,31 @@ const SideBar = ({isMenuOpen, toggleMenu}) => {
         {
             // Way easier to implement than i thought lol
             nameArr.map(function(person, index) {
-                const checkIfActive = isActive === index ? "active" : "";
+                const checkIfPersonActive = isPersonActive === index ? "active" : "";
                 return (
-                    <h4 className={["menu-item", "clickable", checkIfActive].join(" ")} key={index} onClick={() => {setToAmountTexture(index); setIsActive(index);} }>{person}</h4>
+                    <h4 className={["menu-item", "clickable", checkIfPersonActive].join(" ")} key={index} onClick={() => {setToAmountTexture(index); setIsPersonActive(index);} }>{person}</h4>
                 );
             })
         }
         
         {/* TEXTURES END */}
+        {/* SHAPE START */}
+
+        <h4 className="menu-item section-title" style={{fontWeight: "800"}}>Shape</h4>
+        <br />
+        {
+
+            Shapes.map(function(currentShape, index) {
+                const checkIfShapeActive = isShapeActive === index ? "active" : "";
+                return (
+                    <h4 className={["menu-item", "clickable", checkIfShapeActive].join(" ")} key={index} onClick={() => {setToShape(index); setIsShapeActive(index)} }>{currentShape}</h4>
+                );
+            })
+        }
+
+        {/* SHAPES END */}
+
+
 
     </Menu>
     );

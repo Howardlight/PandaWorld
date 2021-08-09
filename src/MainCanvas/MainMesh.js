@@ -55,12 +55,24 @@ const MainMesh = ({ position, args}) => {
         return <boxBufferGeometry attach="geometry" args={args} />;
       case 1:
         return <sphereBufferGeometry attach="geometry" args={[args[0], (args[1] * 15), (args[2] * 13)]} />;
-
+      case 2:
+        return <coneBufferGeometry attach="geometry" args={[args[0], (args[1] * 3 ), (args[2] * 50)]} />
+      case 3:
+        return <cylinderBufferGeometry attach="geometry" args={[args[0], args[0], (args[1] * 3 ), (args[2] * 12)]} />
+      case 4:
+        return <dodecahedronBufferGeometry attach="geometry" args={[args[0], 0]} />
+      case 5:
+        return <icosahedronBufferGeometry attach="geometry" args={[args[0], 0]} />
+      case 6:
+        return <octahedronBufferGeometry attach="geometry" args={[args[0], 0]} />
+      case 7:
+        return <torusBufferGeometry attach="geometry" args={[(args[0] * 2), 1, (args[2] * 15), (args[0] * 15)]} />
+      
 
       // Current Way it is set up,
       // if case is not recognized, do nothing
       default:
-        break;
+        console.log("DEFAULT DETECTED, THIS SHOULDN'T HAPPEN")
     }
   }
 
