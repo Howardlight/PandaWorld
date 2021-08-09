@@ -9,3 +9,16 @@ Tools: <a href="https://github.com/facebook/react">React JS</a>, <a href="https:
 Currently Deployed to: https://howardlight.github.io/PandahWorld/
 
 NOTE: Please keep in mind this is very early in developpement.
+
+## Why Zustand over Redux ?
+
+At first I wanted to use React-redux with its toolkit
+because i thought it would be a good way to simplify 
+state management, as i was standing i was at the point where i
+was passing states from the very top to the children of the canvas
+it was not very good, so i thought react-redux would solve this
+to my Surprise it didn't, and that's because React has a major bug
+where react CANNOT be used between 2 renderers, that being
+the App and the Canvas, so it was not possible to pass redux because
+react would lose the context. This is why i chose to use Zustand, frankly
+i do not like it but it gets the job done.
