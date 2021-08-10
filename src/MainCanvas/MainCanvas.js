@@ -39,10 +39,6 @@ const MainCanvas = () => {
         shadow-camera-bottom={-10}
       />
 
-      {/* <pointLight position={[-10, 0, -20]} intensity={0.5} />
-      <pointLight position={[0, -10, 0]} intensity={1.5} /> */}
-
-
       <fog attach="fog" args={['#f0f0f0', 20, 40]} />
       <group>
 
@@ -82,7 +78,6 @@ const MainCanvas = () => {
       </EffectComposer>
       <OrbitControls />  
 
-      {/* TODO: Lower the Sun's brightness */}
       <Sky
         distance={450000}
         sunPosition={[5, 1, -6]}

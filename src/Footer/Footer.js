@@ -25,7 +25,7 @@ const Footer = () => {
 
     return(
         <footer className={classes.Footer}>
-            <button onClick={handleIsHidden}>{isHidden ? "Show" : "Hide"}</button>
+            {/* <button onClick={handleIsHidden}>{isHidden ? "Show" : "Hide"}</button> */}
         </footer>
     );
 }

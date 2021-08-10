@@ -84,7 +84,7 @@ body {
   color: $lightBlue;
 }
 
-.bm-item:hover {
+.bm-item > h4:hover {
   color: $lightBlue;
   // TODO: add BorderBox here
 }
@@ -134,4 +134,38 @@ body {
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+}
+
+
+.visibility-button {
+
+  // Main Elements
+  cursor: pointer;
+  background-color: hsl(240, 20%, 30%);
+  border: 1px solid hsl(240, 25%, 30%);
+  color: $EggShell;
+
+  // Positioning, Sizing
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  min-width: 100%;
+
+  // Animation and Opacity
+  opacity: 1;
+  filter: alpha(opacity=40);
+  transition: 0.25s;
+}
+// Styling on Clicking Button
+.visibility-button:active {
+  background-color: $grey;
+  box-shadow: 0 5px #000;
+  transform: translateY(4px);
+}
+// Hover Effect
+.visibility-button:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
 }

@@ -6,6 +6,12 @@ import { useStore } from "../redux/store/ZustandStore";
 
 const SideBar = ({isMenuOpen, toggleMenu}) => {
 
+    // related to Visibility of Mesh
+    const isHidden = useStore(state => state.isHidden);
+    const hide = useStore(state => state.hideIsHidden);
+    const show = useStore(state => state.showIsHidden);
+
+
     // oww my brain
     const texture = useStore(state => state.texture);
     const setToAmountTexture = useStore(state => state.setToAmountTexture);    
@@ -25,6 +31,11 @@ const SideBar = ({isMenuOpen, toggleMenu}) => {
         nameArr.push(value.name);
     }
 
+    const handleIsHidden = () => {
+        if(isHidden === false) hide();
+        else show();
+    }
+
     // TODO: Add animations for when texture changes,
     // Check Drei or PostProcessing, maybe Fiber
 
@@ -32,10 +43,13 @@ const SideBar = ({isMenuOpen, toggleMenu}) => {
     return(
       <Menu customBurgerIcon={false} isOpen={isMenuOpen} onClose={toggleMenu} className="sidebar">
 
+
+        <button className="visibility-button" onClick={handleIsHidden}>{isHidden ? "Show" : "Hide"}</button>
+
         {/* TEXTURES START */}
 
         {/* textures Changes opacity on hover, Fix that */}
-        <h4 className="menu-item section-title" style={{fontWeight: "800"}}>Textures</h4>
+        <h4 className="menu-item section-title" style={{fontWeight: "700"}}>Textures</h4>
         <br />
         {
             // Way easier to implement than i thought lol
@@ -50,7 +64,7 @@ const SideBar = ({isMenuOpen, toggleMenu}) => {
         {/* TEXTURES END */}
         {/* SHAPE START */}
 
-        <h4 className="menu-item section-title" style={{fontWeight: "800"}}>Shape</h4>
+        <h4 className="menu-item section-title" style={{fontWeight: "700"}}>Shape</h4>
         <br />
         {
 
