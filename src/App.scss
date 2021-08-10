@@ -1,7 +1,7 @@
-$black: #464655;
-$lightBlue: #79BEEE;
-$cottonCandy: #FFCAF6;
-$EggShell: #E6E4CE;
+$grey: 	hsl(240, 10%, 30%); // #464655
+$lightBlue: hsl(205, 77%, 70%); //#79BEEE
+$cottonCandy: 	hsl(310, 100%, 90%); // #FFCAF6
+$EggShell: hsl(55, 32%, 85%); // #E6E4CE
 
 * {
   box-sizing: border-box;
@@ -30,8 +30,9 @@ body {
   position: fixed;
   overflow: hidden;
   overscroll-behavior-y: none;
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-    helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  // font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+  //   helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  font-family: Helvetica, sans-serif;
   color: black;
   -webkit-font-smoothing: antialiased;
   background: #f1f4f8;
@@ -114,7 +115,7 @@ body {
 
 /* General sidebar styles */
 .bm-menu {
-  background: $black;
+  background: $grey;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
   overflow: unset !important ;
