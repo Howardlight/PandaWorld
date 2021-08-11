@@ -84,7 +84,7 @@ body {
   color: $lightBlue;
 }
 
-.bm-item > h4:hover {
+.bm-item + h4:hover {
   color: $lightBlue;
   // TODO: add BorderBox here
 }
