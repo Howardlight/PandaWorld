@@ -23,9 +23,6 @@ function App() {
   // change texture
 
   //TODO: REDO THE USER INTERFACE
-
-
-  // This is a test for mail maps
   return (
     <>
       <Header toggleMenu={toggleMenu}/> 
