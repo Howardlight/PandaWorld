@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { softShadows, OrbitControls, Sky } from "@react-three/drei";
+import Effects from "./Effects";
 import Light from "./Light";
 import MainMesh from "./MainMesh";
 
@@ -18,10 +19,6 @@ const MainCanvas = () => {
   return (
     <Canvas shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
 
-
-      <Light />
-
-
       <fog attach="fog" args={['#f0f0f0', 20, 40]} />
       <group>
 
@@ -35,27 +32,8 @@ const MainCanvas = () => {
           { isHidden ? "" : <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} /> }
         </Suspense>
       </group>
-
-      <EffectComposer multisampling={0} disableNormalPass={true}>
-        <DepthOfField
-          focusDisctance={1}
-          focalLength={0.07}
-          bokehScale={3}
-          height={480}
-        />
-        {/* <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} /> */}
-        <Noise opacity={0.02} />
-
-
-        {/* TIP: SMAA Fucked up the Vignette last time, Watch out */}
-        <Vignette
-          offset={0.5} // vignette offset
-          darkness={0.5} // vignette darkness
-          eskil={false} // Eskil's vignette technique
-          blendFunction={BlendFunction.NORMAL} // blend mode
-        />
-
-      </EffectComposer>
+      <Light />
+      <Effects />
       <OrbitControls />  
 
       <Sky
