@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { softShadows, OrbitControls, Sky } from "@react-three/drei";
 import Effects from "./Effects";
 import Light from "./Light";
-import MainMesh from "./MainMesh";
+import MainMesh from "./ObjectMesh/MainMesh";
 
 // Zustand, handles isHidden State
 import { useStore } from "../redux/store/ZustandStore";
@@ -11,7 +11,6 @@ import { useStore } from "../redux/store/ZustandStore";
 
 // Softens the Shadows
 softShadows();
-
 const MainCanvas = () => {
 
   // visibility-Zustand

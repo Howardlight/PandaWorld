@@ -4,7 +4,7 @@ import { useTexture } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 
 import textureArr from "./Meshes";
-import { useStore } from "../redux/store/ZustandStore";
+import { useStore } from "../../redux/store/ZustandStore";
 
 const MainMesh = ({ position, args}) => {
 

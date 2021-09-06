@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
-import textureArr from "../MainCanvas/Meshes";
-import Shapes from "../MainCanvas/Shapes";
+import textureArr from "../MainCanvas/ObjectMesh/Meshes";
+import Shapes from "../MainCanvas/ObjectMesh/Shapes";
 import { useStore } from "../redux/store/ZustandStore";
 
 const SideBar = ({isMenuOpen, toggleMenu}) => {
