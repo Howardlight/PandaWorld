@@ -38,12 +38,9 @@ const SideBar = ({isMenuOpen, toggleMenu}) => {
 
     // TODO: Add animations for when texture changes,
     // Check Drei or PostProcessing, maybe Fiber
-
     // TODO: Slide Animation does not occur consistently, Fix that
     return(
       <Menu customBurgerIcon={false} isOpen={isMenuOpen} onClose={toggleMenu} className="sidebar">
-
-
         <button className="visibility-button" onClick={handleIsHidden}>{isHidden ? "Show" : "Hide"}</button>
 
         {/* TEXTURES START */}
@@ -60,10 +57,9 @@ const SideBar = ({isMenuOpen, toggleMenu}) => {
                 );
             })
         }
-        
         {/* TEXTURES END */}
-        {/* SHAPE START */}
 
+        {/* SHAPE START */}
         <h4 className="menu-item section-title" style={{fontWeight: "700", marginTop: "30px"}}>Shape</h4>
         <br />
         {
@@ -75,10 +71,7 @@ const SideBar = ({isMenuOpen, toggleMenu}) => {
                 );
             })
         }
-
         {/* SHAPES END */}
-
-
 
     </Menu>
     );
