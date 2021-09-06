@@ -1,13 +1,7 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { softShadows, OrbitControls, Sky } from "@react-three/drei";
-import {
-  EffectComposer,
-  DepthOfField,
-  Noise,
-  Vignette,
-} from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
+import Light from "./Light";
 import MainMesh from "./MainMesh";
 
 // Zustand, handles isHidden State
@@ -21,23 +15,12 @@ const MainCanvas = () => {
 
   // visibility-Zustand
   const   isHidden = useStore(state => state.isHidden);
-
   return (
     <Canvas shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
-      <ambientLight intensity={0.2} />
 
-      <directionalLight
-        castShadow
-        position={[0, 10, 0]}
-        intensity={1}
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
-        shadow-camera-far={50}
-        shadow-camera-left={-10}
-        shadow-camera-right={10}
-        shadow-camera-top={10}
-        shadow-camera-bottom={-10}
-      />
+
+      <Light />
+
 
       <fog attach="fog" args={['#f0f0f0', 20, 40]} />
       <group>
@@ -49,11 +32,8 @@ const MainCanvas = () => {
         </mesh>
 
         <Suspense fallback={null}>
-
           { isHidden ? "" : <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} /> }
-
         </Suspense>
-
       </group>
 
       <EffectComposer multisampling={0} disableNormalPass={true}>
