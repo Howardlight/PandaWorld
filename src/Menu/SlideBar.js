@@ -64,7 +64,7 @@ const SideBar = ({isMenuOpen, toggleMenu}) => {
         {/* TEXTURES END */}
         {/* SHAPE START */}
 
-        <h4 className="menu-item section-title" style={{fontWeight: "700"}}>Shape</h4>
+        <h4 className="menu-item section-title" style={{fontWeight: "700", marginTop: "30px"}}>Shape</h4>
         <br />
         {
 
