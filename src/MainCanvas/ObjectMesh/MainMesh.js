@@ -8,7 +8,6 @@ import { useStore } from "../../redux/store/ZustandStore";
 
 const MainMesh = ({ position, args}) => {
 
-
   const texture = useStore(state => state.texture);
   const shape = useStore(state => state.shape);
   
@@ -21,7 +20,6 @@ const MainMesh = ({ position, args}) => {
     mesh.current.rotation.x = mesh.current.rotation.y += 0.007;
   });
 
-
   // This might not be very Optimized
   // TODO: Check drei for possible optimizations 
   // Creates 2 Arrays, one with the file names,
@@ -32,25 +30,19 @@ const MainMesh = ({ position, args}) => {
     AvailableTextures.push(value.name + "Texture");
     AvailableTexturesPaths.push(process.env.PUBLIC_URL + value.fileName);
   }
-  
   AvailableTextures = useTexture(AvailableTexturesPaths);
-
-
 
   // Load Animations with spring
   const props = useSpring({
     scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
   });
 
-
   // TODO: Add More Shapes
   // TODO: Maybe port this to the Slidebar?
 
   // handles shape of Mesh, Sphere or Box
   function handleMeshShape() {   
-
     switch(shape) {
-      
       case 0:
         return <boxBufferGeometry attach="geometry" args={args} />;
       case 1:
@@ -67,8 +59,6 @@ const MainMesh = ({ position, args}) => {
         return <octahedronBufferGeometry attach="geometry" args={[args[0], 0]} />
       case 7:
         return <torusBufferGeometry attach="geometry" args={[(args[0] * 2), 1, (args[2] * 15), (args[0] * 15)]} />
-      
-
       // Current Way it is set up,
       // if case is not recognized, do nothing
       default:
