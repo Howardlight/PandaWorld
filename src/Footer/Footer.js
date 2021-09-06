@@ -18,7 +18,6 @@ const Footer = () => {
 
 
     // TODO: Add more Buttons that control Texture
-    // TODO: add Effects Buttons, maybe slider???
     // TODO: Add night time button, adds Stars, removes sun, darkens light emitters
     // TIP: Use Leva or react-three/gui
     // All components that will act as a UI MUST be overlapped over the canvas
