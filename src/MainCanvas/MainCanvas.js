@@ -7,6 +7,24 @@ import MainMesh from "./ObjectMesh/MainMesh";
 
 // Zustand, handles isHidden State
 import { useStore } from "../redux/store/ZustandStore";
+import { Physics, usePlane } from "@react-three/cannon";
+
+
+function Plane(props) {
+  const [ref] = usePlane(() => ({rotation: [-Math.PI /2, 0, 0], position: [0, -3, 0], ...props}));
+  return (
+    <mesh 
+    receiveShadow
+    // rotation={[-Math.PI / 2, 0, 0]} 
+    // position={[0, -3, 0]}
+    ref={ref}
+    >
+      <planeBufferGeometry attach="geometry" args={[250, 250]} />
+      <shadowMaterial attach="material" opacity={0.3} />
+      <meshStandardMaterial attach="material" color={"#FFCAF6"} />
+    </mesh>
+  )
+}
 
 
 // Softens the Shadows
@@ -21,15 +39,18 @@ const MainCanvas = () => {
       <fog attach="fog" args={['#f0f0f0', 20, 40]} />
       <group>
 
-        <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -3, 0]}>
+        {/* <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -3, 0]}>
           <planeBufferGeometry attach="geometry" args={[250, 250]} />
           <shadowMaterial attach="material" opacity={0.3} />
           <meshStandardMaterial attach="material" color={"#FFCAF6"} />
-        </mesh>
-
-        <Suspense fallback={null}>
-          { isHidden ? "" : <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} /> }
-        </Suspense>
+        </mesh> */}
+        <Physics>
+          <Suspense fallback={null}>
+            <Plane />
+            {/* <Cube /> */}
+            { isHidden ? "" : <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} /> }
+          </Suspense>
+        </Physics>
       </group>
       <Light />
       <Effects />
