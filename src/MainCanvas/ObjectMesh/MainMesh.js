@@ -1,23 +1,25 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
+import { useBox } from "@react-three/cannon";
 
 import textureArr from "./Meshes";
 import { useStore } from "../../redux/store/ZustandStore";
 
-const MainMesh = ({ position, args}) => {
+function MainMesh (props) {
 
   const texture = useStore(state => state.texture);
   const shape = useStore(state => state.shape);
   
   // declare State hook
   const [expand, setExpand] = useState(false);
-
+  
   // Refresh every Frame
-  const mesh = useRef(null);
+  const [ref] = useBox(() => ({ mass: 1, position: props.position, ...props }));
   useFrame(() => {
-    mesh.current.rotation.x = mesh.current.rotation.y += 0.007;
+    // mesh.current.rotation.x = mesh.current.rotation.y += 0.007;
+    // TODO: Add interactivity with physics here
   });
 
   // This might not be very Optimized
@@ -33,32 +35,33 @@ const MainMesh = ({ position, args}) => {
   AvailableTextures = useTexture(AvailableTexturesPaths);
 
   // Load Animations with spring
-  const props = useSpring({
+  // TODO: Fix Clipping with the ground on expand, if possible,
+  // else remove it / replace it
+  // TODO: Add reposition Button
+  const springProps = useSpring({
     scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
   });
 
-  // TODO: Add More Shapes
-  // TODO: Maybe port this to the Slidebar?
-
+  // TODO: Export this or sum shit, it looks awful here
   // handles shape of Mesh, Sphere or Box
   function handleMeshShape() {   
     switch(shape) {
       case 0:
-        return <boxBufferGeometry attach="geometry" args={args} />;
+        return <boxBufferGeometry attach="geometry" args={props.args} />;
       case 1:
-        return <sphereBufferGeometry attach="geometry" args={[args[0], (args[1] * 15), (args[2] * 13)]} />;
+        return <sphereBufferGeometry attach="geometry" args={[props.args[0], (props.args[1] * 15), (props.args[2] * 13)]} />;
       case 2:
-        return <coneBufferGeometry attach="geometry" args={[args[0], (args[1] * 3 ), (args[2] * 50)]} />
+        return <coneBufferGeometry attach="geometry" args={[props.args[0], (props.args[1] * 3 ), (props.args[2] * 50)]} />
       case 3:
-        return <cylinderBufferGeometry attach="geometry" args={[args[0], args[0], (args[1] * 3 ), (args[2] * 12)]} />
+        return <cylinderBufferGeometry attach="geometry" args={[props.args[0], props.args[0], (props.args[1] * 3 ), (props.args[2] * 12)]} />
       case 4:
-        return <dodecahedronBufferGeometry attach="geometry" args={[args[0], 0]} />
+        return <dodecahedronBufferGeometry attach="geometry" args={[props.args[0], 0]} />
       case 5:
-        return <icosahedronBufferGeometry attach="geometry" args={[args[0], 0]} />
+        return <icosahedronBufferGeometry attach="geometry" args={[props.args[0], 0]} />
       case 6:
-        return <octahedronBufferGeometry attach="geometry" args={[args[0], 0]} />
+        return <octahedronBufferGeometry attach="geometry" args={[props.args[0], 0]} />
       case 7:
-        return <torusBufferGeometry attach="geometry" args={[(args[0] * 2), 1, (args[2] * 15), (args[0] * 15)]} />
+        return <torusBufferGeometry attach="geometry" args={[(props.args[0] * 2), 1, (props.args[2] * 15), (props.args[0] * 15)]} />
       // Current Way it is set up,
       // if case is not recognized, do nothing
       default:
@@ -69,10 +72,10 @@ const MainMesh = ({ position, args}) => {
   return (
     <a.mesh
       onClick={() => setExpand(!expand)}
-      scale={props.scale}
+      scale={springProps.scale}
       castShadow
-      position={position}
-      ref={mesh}
+      // position={position}
+      ref={ref}
     >
       {handleMeshShape()}
       <meshStandardMaterial
@@ -81,8 +84,6 @@ const MainMesh = ({ position, args}) => {
         map={
           AvailableTextures[texture]
         }
-
-
 
         factor={0.3}
         roughness={0.7}
