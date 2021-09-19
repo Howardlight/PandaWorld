@@ -4,6 +4,8 @@ import { softShadows, OrbitControls, Sky } from "@react-three/drei";
 import Effects from "./Effects";
 import Light from "./Light";
 import MainMesh from "./ObjectMesh/MainMesh";
+import BoxMesh from "./ObjectMesh/BoxMesh";
+import SphereMesh from "./ObjectMesh/SphereMesh";
 
 // Zustand, handles isHidden State
 import { useStore } from "../redux/store/ZustandStore";
@@ -58,21 +60,29 @@ const MainCanvas = () => {
 
   // visibility-Zustand
   const   isHidden = useStore(state => state.isHidden);
+  // shape-Zustand
+  const shape = useStore(state => state.shape);
+
+  function handleMeshLoading() {
+    switch(shape) {
+      case 0:
+        return isHidden ? "" : <BoxMesh args={[2, 2, 2]} position={[0, 10, 0]} />;
+      case 1:
+        return isHidden ? "" : <SphereMesh args={[2, 2, 2]} position={[0, 10, 0]} />;
+      default:
+        return "";
+    }
+  }
+
   return (
     <Canvas shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
 
       <fog attach="fog" args={['#f0f0f0', 20, 40]} />
       <group>
-
-        {/* <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -3, 0]}>
-          <planeBufferGeometry attach="geometry" args={[250, 250]} />
-          <shadowMaterial attach="material" opacity={0.3} />
-          <meshStandardMaterial attach="material" color={"#FFCAF6"} />
-        </mesh> */}
         <Physics>
           <Suspense fallback={null}>
             <Plane />
-            { isHidden ? "" : <MainMesh args={[2, 2, 2]} position={[0, 10, 0]} />}
+            {handleMeshLoading()}
           </Suspense>
         </Physics>
       </group>
