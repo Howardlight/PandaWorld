@@ -32,5 +32,6 @@ it was not very good, so i thought react-redux would solve this
 to my Surprise it didn't, and that's because React has a major bug
 where react CANNOT be used between 2 renderers, that being
 the App and the Canvas, so it was not possible to pass redux because
-react would lose the context. This is why i chose to use Zustand, frankly
-i do not like it but it gets the job done.
+react would lose the context. This is why i chose to use Zustand.
+The tradeoff is simplicity and bloatness in exchange for Redux's
+boilerplate-y but concise nature.
