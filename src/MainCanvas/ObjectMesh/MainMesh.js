@@ -14,6 +14,12 @@ function MainMesh (props) {
   
   // declare State hook
   const [expand, setExpand] = useState(false);
+
+  // NOTE: I have nooo idea what is wrong with this
+  // but here's a working model of Physics:
+  // https://codesandbox.io/s/react-three-cannon-demo-with-api-usage-mr25f?file=/src/App.js:327-646
+  // ARGS TAKES ONE NUMBER, NOT A LIST
+  // useBox seems to work fine, but useSphere is very finiky
   
   // Refresh every Frame
   const [ref] = useBox(() => ({ mass: 1, position: props.position, ...props }));
