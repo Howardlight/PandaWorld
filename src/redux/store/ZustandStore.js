@@ -12,7 +12,7 @@ export const useStore = create(set => ({
     showIsHidden: () => set(state => ({ isHidden: false})),
 
     // related to the shape of the MainMesh
-    shape: 1,
+    shape: 0,
     setToShape: (input) => set(state => ({ shape: input})),
 
 }));
