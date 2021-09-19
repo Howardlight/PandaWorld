@@ -1,32 +1,66 @@
-import React, { useState } from "react";
-import { useFrame } from "@react-three/fiber";
+import React, { 
+  useState, 
+  // useRef 
+} from "react";
+import { 
+  useFrame, 
+  // useThree
+ } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
-import { useBox } from "@react-three/cannon";
+import { 
+  // useBox, 
+  // useCylinder, 
+  useSphere, 
+  // useConeTwistConstraint
+ } from "@react-three/cannon";
 
 import textureArr from "./Meshes";
 import { useStore } from "../../redux/store/ZustandStore";
 
 function MainMesh (props) {
-
+  // Gets relevant states from Zustand
   const texture = useStore(state => state.texture);
   const shape = useStore(state => state.shape);
-  
+
   // declare State hook
   const [expand, setExpand] = useState(false);
 
   // NOTE: I have nooo idea what is wrong with this
   // but here's a working model of Physics:
   // https://codesandbox.io/s/react-three-cannon-demo-with-api-usage-mr25f?file=/src/App.js:327-646
+  // https://maxrohde.com/2019/10/23/create-and-drag-shapes-with-three-js-react-and-cannon-js/
   // ARGS TAKES ONE NUMBER, NOT A LIST
   // useBox seems to work fine, but useSphere is very finiky
-  
-  // Refresh every Frame
-  const [ref] = useBox(() => ({ mass: 1, position: props.position, ...props }));
+  // SPHERE REF
+  const [sphereRef, sphereApi] = useSphere(() => ({ 
+    mass: 1,
+    position: props.position,
+
+    args: props.args[0],
+  }));
+
+
+  // BOX REF
+  // const [boxRef] = useBox(() => ({
+  //   mass: 1,
+  //   position: props.position,
+
+  //   args: props.args,
+  // }));
+  // const { ref, body } = useCannon({ bodyProps: { mass: 100000 } }, body => {
+  //   body.addShape(new CANNON.Box(new CANNON.Vec3(1, 1, 1)))
+  //   body.position.set(...position);
+  // }, []);
+
+  // refreshes every frame
   useFrame(() => {
-    // mesh.current.rotation.x = mesh.current.rotation.y += 0.007;
-    // TODO: Add interactivity with physics here
   });
+
+  function handleOnClick() {
+    setExpand(!expand);
+    sphereApi.applyImpulse([3, 5, -5], [0, 0, 0]);
+  }
 
   // This might not be very Optimized
   // TODO: Check drei for possible optimizations 
@@ -53,9 +87,15 @@ function MainMesh (props) {
   function handleMeshShape() {   
     switch(shape) {
       case 0:
-        return <boxBufferGeometry attach="geometry" args={props.args} />;
+        return <boxBufferGeometry 
+        attach="geometry" 
+        args={props.args}
+         />;
       case 1:
-        return <sphereBufferGeometry attach="geometry" args={[props.args[0], (props.args[1] * 15), (props.args[2] * 13)]} />;
+        return <sphereBufferGeometry 
+        attach="geometry" 
+        args={[props.args[0], (props.args[1] * 15), (props.args[2] * 13)]}
+        />;
       case 2:
         return <coneBufferGeometry attach="geometry" args={[props.args[0], (props.args[1] * 3 ), (props.args[2] * 50)]} />
       case 3:
@@ -71,17 +111,16 @@ function MainMesh (props) {
       // Current Way it is set up,
       // if case is not recognized, do nothing
       default:
-        console.log("DEFAULT DETECTED, THIS SHOULDN'T HAPPEN")
+        console.log("DEFAULT DETECTED, THIS SHOULDN'T HAPPEN");
     }
   }
 
   return (
     <a.mesh
-      onClick={() => setExpand(!expand)}
       scale={springProps.scale}
       castShadow
-      // position={position}
-      ref={ref}
+      ref={sphereRef}
+      onClick={handleOnClick}
     >
       {handleMeshShape()}
       <meshStandardMaterial
