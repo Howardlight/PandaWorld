@@ -3,7 +3,7 @@ import './App.scss';
 
 import MainCanvas from './MainCanvas/MainCanvas';
 import Header from './Header/Header';
-import Footer from "./Footer/Footer";
+// import Footer from "./Footer/Footer";
 import SlideBar from "./Menu/SlideBar";
 
 
