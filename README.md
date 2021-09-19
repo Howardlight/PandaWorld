@@ -20,6 +20,8 @@ Background Music
 
 Sound Effects
 
+Fix the Camera
+
 UI Redesign
 
 ## Why Zustand over Redux ?
