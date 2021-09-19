@@ -10,6 +10,18 @@ Currently Deployed to: https://howardlight.github.io/PandahWorld/
 
 NOTE: Please keep in mind this is very early in developpement.
 
+## RoadMap
+
+Square Physics
+
+Events
+
+Background Music
+
+Sound Effects
+
+UI Redesign
+
 ## Why Zustand over Redux ?
 
 At first I wanted to use React-redux with its toolkit
