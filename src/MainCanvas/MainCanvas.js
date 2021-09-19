@@ -11,7 +11,7 @@ import { Physics, usePlane } from "@react-three/cannon";
 
 
 function Plane(props) {
-  const [ref] = usePlane(() => ({rotation: [-Math.PI /2, 0, 0], position: [0, -3, 0], ...props}));
+  const [ref, api] = usePlane(() => ({rotation: [-Math.PI /2, 0, 0], position: [0, -3, 0], ...props}));
   return (
     <mesh 
     receiveShadow
@@ -26,6 +26,31 @@ function Plane(props) {
   )
 }
 
+// function Cube(props) {
+//   const [ref] = useBox(() => ({ mass: 1, position: [0, 5, 0], ...props }))
+//   return (
+//     <mesh ref={ref}>
+//       <boxBufferGeometry />
+//     </mesh>
+//   )
+// }
+
+// function Marble() {
+//   const [ref] = useSphere(() => ({
+//     mass: 10,
+//     position: [2, 5, 0]
+//   }));
+
+//   return (
+//     <mesh ref={ref} castShadow>
+//       <sphereBufferGeometry
+//         attach="geometry"
+//         args={[1, 32, 32]}
+//       ></sphereBufferGeometry>
+//       <meshStandardMaterial color="white" />
+//     </mesh>
+//   );
+// }
 
 // Softens the Shadows
 softShadows();
@@ -47,8 +72,7 @@ const MainCanvas = () => {
         <Physics>
           <Suspense fallback={null}>
             <Plane />
-            {/* <Cube /> */}
-            { isHidden ? "" : <MainMesh position={[0, 1, 0]} args={[2, 2, 2]} /> }
+            { isHidden ? "" : <MainMesh args={[2, 2, 2]} position={[0, 10, 0]} />}
           </Suspense>
         </Physics>
       </group>
