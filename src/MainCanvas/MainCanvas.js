@@ -1,19 +1,28 @@
 import React, { Suspense } from "react";
+
+// Three Fiber Drei Cannon Imports
 import { Canvas } from "@react-three/fiber";
 import { softShadows, OrbitControls, Sky } from "@react-three/drei";
+import { 
+  Physics,
+  usePlane,
+  // Debug
+} from "@react-three/cannon";
+
+// Canvas Objects and Configs
 import Effects from "./Effects";
 import Light from "./Light";
-import MainMesh from "./ObjectMesh/MainMesh";
+
+// import MainMesh from "./ObjectMesh/MainMesh";
 import BoxMesh from "./ObjectMesh/BoxMesh";
 import SphereMesh from "./ObjectMesh/SphereMesh";
 
 // Zustand, handles isHidden State
 import { useStore } from "../redux/store/ZustandStore";
-import { Physics, usePlane } from "@react-three/cannon";
 
 
 function Plane(props) {
-  const [ref, api] = usePlane(() => ({rotation: [-Math.PI /2, 0, 0], position: [0, -3, 0], ...props}));
+  const [ref] = usePlane(() => ({rotation: [-Math.PI /2, 0, 0], position: [0, -3, 0], ...props}));
   return (
     <mesh 
     receiveShadow
@@ -28,6 +37,7 @@ function Plane(props) {
   )
 }
 
+// OBJECTS FOR TESTING
 // function Cube(props) {
 //   const [ref] = useBox(() => ({ mass: 1, position: [0, 5, 0], ...props }))
 //   return (
@@ -62,6 +72,10 @@ const MainCanvas = () => {
   const   isHidden = useStore(state => state.isHidden);
   // shape-Zustand
   const shape = useStore(state => state.shape);
+
+  // TODO: PORT IMAGES USED AS TEXTURES TO SRC, INSIDE ASSETS/IMAGES
+  // this is so they can benefit from the webpack and reduce the bundle size
+
 
   // Swaps between the shapes
   // TODO: Add Support for other Shapes
