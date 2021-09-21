@@ -21,7 +21,6 @@ import { useStore } from "../../redux/store/ZustandStore";
 function BoxMesh (props) {
   // Gets relevant states from Zustand
   const texture = useStore(state => state.texture);
-  const shape = useStore(state => state.shape);
 
   // declare State hook
   const [expand, setExpand] = useState(false);
