@@ -40,15 +40,7 @@ function MainMesh (props) {
     args: props.args[0],
   }));
 
-
-  // BOX REF
-  // const [boxRef] = useBox(() => ({
-  //   mass: 1,
-  //   position: props.position,
-
-  //   args: props.args,
-  // }));
-
+  
   // refreshes every frame
   useFrame(() => {
   });
@@ -83,15 +75,13 @@ function MainMesh (props) {
   AvailableTextures = useTexture(AvailableTexturesPaths);
 
   // Load Animations with spring
-  // TODO: Fix Clipping with the ground on expand, if possible,
-  // else remove it / replace it
-  // TODO: Add reposition Button
   const springProps = useSpring({
     scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
   });
 
-  // TODO: Export this or sum shit, it looks awful here
-  // handles shape of Mesh, Sphere or Box
+  // TODO: SHAPE IS HANDLED IN MAINMESH, THIS IS
+  // BLOATED AND UNNESSESSARY
+  // REWRITE THIS
   function handleMeshShape() {   
     switch(shape) {
       case 0:

@@ -63,6 +63,8 @@ const MainCanvas = () => {
   // shape-Zustand
   const shape = useStore(state => state.shape);
 
+  // Swaps between the shapes
+  // TODO: Add Support for other Shapes
   function handleMeshLoading() {
     switch(shape) {
       case 0:

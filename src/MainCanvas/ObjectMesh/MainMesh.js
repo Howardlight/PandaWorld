@@ -18,6 +18,7 @@ import {
 import textureArr from "./Meshes";
 import { useStore } from "../../redux/store/ZustandStore";
 
+// DEPRECATED
 function MainMesh (props) {
   // Gets relevant states from Zustand
   const texture = useStore(state => state.texture);
@@ -32,14 +33,12 @@ function MainMesh (props) {
   // https://maxrohde.com/2019/10/23/create-and-drag-shapes-with-three-js-react-and-cannon-js/
   // ARGS TAKES ONE NUMBER, NOT A LIST
   // useBox seems to work fine, but useSphere is very finiky
-  // SPHERE REF
   const [sphereRef, sphereApi] = useSphere(() => ({ 
     mass: 1,
     position: props.position,
 
     args: props.args[0],
   }));
-
 
   // BOX REF
   // const [boxRef] = useBox(() => ({
@@ -48,10 +47,6 @@ function MainMesh (props) {
 
   //   args: props.args,
   // }));
-  // const { ref, body } = useCannon({ bodyProps: { mass: 100000 } }, body => {
-  //   body.addShape(new CANNON.Box(new CANNON.Vec3(1, 1, 1)))
-  //   body.position.set(...position);
-  // }, []);
 
   // refreshes every frame
   useFrame(() => {
@@ -59,7 +54,12 @@ function MainMesh (props) {
 
   function handleOnClick() {
     setExpand(!expand);
-    sphereApi.applyImpulse([3, 5, -5], [0, 0, 0]);
+    const randomImpulse = [
+      Math.round(Math.random()) * 2 - 1,
+      Math.random() * 5,
+      Math.round(Math.random()) * 2 - 1
+      ];
+    sphereApi.applyImpulse(randomImpulse, [0, 0, 0]);
   }
 
   // This might not be very Optimized
@@ -70,7 +70,7 @@ function MainMesh (props) {
   let AvailableTexturesPaths = [];
   for(let value of textureArr){
     AvailableTextures.push(value.name + "Texture");
-    AvailableTexturesPaths.push(process.env.PUBLIC_URL + value.fileName);
+    AvailableTexturesPaths.push("../../Assets/Images" + value.fileName);
   }
   AvailableTextures = useTexture(AvailableTexturesPaths);
 

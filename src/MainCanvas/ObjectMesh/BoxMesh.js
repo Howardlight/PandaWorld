@@ -32,15 +32,6 @@ function BoxMesh (props) {
   // https://maxrohde.com/2019/10/23/create-and-drag-shapes-with-three-js-react-and-cannon-js/
   // ARGS TAKES ONE NUMBER, NOT A LIST
   // useBox seems to work fine, but useSphere is very finiky
-  // SPHERE REF
-  // const [sphereRef, sphereApi] = useSphere(() => ({ 
-  //   mass: 1,
-  //   position: props.position,
-
-  //   args: props.args[0],
-  // }));
-
-
   // BOX REF
   const [boxRef, boxApi] = useBox(() => ({
     mass: 1,
@@ -53,6 +44,7 @@ function BoxMesh (props) {
   useFrame(() => {
   });
 
+  // Helper Func: returns random [r, r, r] list
   function getRandomImpulse(multiplier) {
     return [
       (Math.round(Math.random()) * 2 - 1) * multiplier,
@@ -70,8 +62,8 @@ function BoxMesh (props) {
     boxApi.applyImpulse(randomImpulse, [0, 0, 0]);
   }
 
-  // This might not be very Optimized
-  // TODO: Check drei for possible optimizations 
+  // TODO: Make this into a helper func, export it to its own file,
+  // Helper Functions file, then use it
   // Creates 2 Arrays, one with the file names,
   // the other with the Paths
   let AvailableTextures = [];
@@ -83,15 +75,13 @@ function BoxMesh (props) {
   AvailableTextures = useTexture(AvailableTexturesPaths);
 
   // Load Animations with spring
-  // TODO: Fix Clipping with the ground on expand, if possible,
-  // else remove it / replace it
-  // TODO: Add reposition Button
   const springProps = useSpring({
     scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
   });
 
-  // TODO: Export this or sum shit, it looks awful here
-  // handles shape of Mesh, Sphere or Box
+  // TODO: SHAPE IS HANDLED IN MAINMESH, THIS IS
+  // BLOATED AND UNNESSESSARY
+  // REWRITE THIS
   function handleMeshShape() {   
     switch(shape) {
       case 0:
