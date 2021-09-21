@@ -32,7 +32,7 @@ function BoxMesh (props) {
   // https://maxrohde.com/2019/10/23/create-and-drag-shapes-with-three-js-react-and-cannon-js/
   // ARGS TAKES ONE NUMBER, NOT A LIST
   // useBox seems to work fine, but useSphere is very finiky
-  // BOX REF
+
   const [boxRef, boxApi] = useBox(() => ({
     mass: 1,
     position: props.position,
@@ -45,6 +45,7 @@ function BoxMesh (props) {
   });
 
   // Helper Func: returns random [r, r, r] list
+  // TODO: Export these 2 funcs into a Helper fun file
   function getRandomImpulse(multiplier) {
     return [
       (Math.round(Math.random()) * 2 - 1) * multiplier,
@@ -52,7 +53,6 @@ function BoxMesh (props) {
       (Math.round(Math.random()) * 2 - 1) * multiplier
       ];
   }
-
 
   function handleOnClick() {
     // handles expanding the mesh
@@ -79,39 +79,6 @@ function BoxMesh (props) {
     scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
   });
 
-  // TODO: SHAPE IS HANDLED IN MAINMESH, THIS IS
-  // BLOATED AND UNNESSESSARY
-  // REWRITE THIS
-  function handleMeshShape() {   
-    switch(shape) {
-      case 0:
-        return <boxBufferGeometry 
-        attach="geometry" 
-        args={props.args}
-         />;
-      case 1:
-        return <sphereBufferGeometry 
-        attach="geometry" 
-        args={[props.args[0], (props.args[1] * 15), (props.args[2] * 13)]}
-        />;
-      case 2:
-        return <coneBufferGeometry attach="geometry" args={[props.args[0], (props.args[1] * 3 ), (props.args[2] * 50)]} />
-      case 3:
-        return <cylinderBufferGeometry attach="geometry" args={[props.args[0], props.args[0], (props.args[1] * 3 ), (props.args[2] * 12)]} />
-      case 4:
-        return <dodecahedronBufferGeometry attach="geometry" args={[props.args[0], 0]} />
-      case 5:
-        return <icosahedronBufferGeometry attach="geometry" args={[props.args[0], 0]} />
-      case 6:
-        return <octahedronBufferGeometry attach="geometry" args={[props.args[0], 0]} />
-      case 7:
-        return <torusBufferGeometry attach="geometry" args={[(props.args[0] * 2), 1, (props.args[2] * 15), (props.args[0] * 15)]} />
-      // Current Way it is set up,
-      // if case is not recognized, do nothing
-      default:
-        console.log("DEFAULT DETECTED, THIS SHOULDN'T HAPPEN");
-    }
-  }
 
   return (
     <a.mesh
@@ -120,7 +87,7 @@ function BoxMesh (props) {
       ref={boxRef}
       onClick={handleOnClick}
     >
-      {handleMeshShape()}
+      <boxBufferGeometry attach="geometry" args={props.args} />;
       <meshStandardMaterial
         attach="material"
 
