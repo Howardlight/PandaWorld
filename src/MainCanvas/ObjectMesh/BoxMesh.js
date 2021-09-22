@@ -45,8 +45,8 @@ function BoxMesh (props) {
   }));
 
   // refreshes every frame
-  useFrame(() => {
-  });
+  // useFrame(() => {
+  // });
 
   function handleOnClick() {
     // handles expanding the mesh
