@@ -22,7 +22,7 @@ import {
 import { 
   getAvailableTexturePaths,
   getRandomImpulse,  
-} from "./Utils/Utils";
+} from "./Utils";
 
 // Zustand states
 import { useStore } from "../../redux/store/ZustandStore";

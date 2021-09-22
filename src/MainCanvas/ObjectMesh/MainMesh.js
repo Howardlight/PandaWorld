@@ -16,7 +16,7 @@ import {
  } from "@react-three/cannon";
 
 // import textureArr from "./Meshes";
-import { textureArr } from "./Utils/Utils";
+import { textureArr } from "./Utils";
 import { useStore } from "../../redux/store/ZustandStore";
 
 // DEPRECATED
