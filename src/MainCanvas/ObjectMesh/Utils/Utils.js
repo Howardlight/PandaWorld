@@ -1,5 +1,3 @@
-import textureArr from "./Meshes";
-
 
 // Helper Func
 // Creates 2 Arrays, one with the file names,
@@ -29,3 +27,37 @@ export function getRandomImpulse(multiplier) {
       (Math.round(Math.random()) * 2 - 1) * multiplier
     ];
 }
+
+export const Shapes = [
+
+    "Box", // 0
+    "Circle", // 1
+    "Cone", // 2
+    "Cylinder", // 3
+    "Dodecahedron", // 4
+    "Icoashedron", // 5
+    "Octagedron", // 6
+    "Torus", // 7
+
+];
+
+// Array that contains all the meshes
+export const textureArr = [
+    
+    {
+        name: "Apandah",
+        fileName: "/Apandah.jpg"
+    },
+    {
+        name: "Aztrosist",
+        fileName: "/Aztro.jpg"
+    },
+    {
+        name: "Jschlatt",
+        fileName: "/Jschlatt.png"
+    },
+    {
+        name: "Mikasacus",
+        fileName: "/Mikasacus.jpg"
+    }
+];
