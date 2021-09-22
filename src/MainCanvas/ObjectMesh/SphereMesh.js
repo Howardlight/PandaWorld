@@ -15,7 +15,10 @@ import {
   // useConeTwistConstraint
  } from "@react-three/cannon";
 
-import textureArr from "./Meshes";
+import { 
+  getAvailableTexturePaths,
+  getRandomImpulse,  
+} from "./Utils";
 import { useStore } from "../../redux/store/ZustandStore";
 
 function MainMesh (props) {
@@ -44,16 +47,6 @@ function MainMesh (props) {
   useFrame(() => {
   });
 
-  // Helper Func: returns random [r, r, r] list
-  // TODO: Export these 2 funcs into a Helper fun file
-  function getRandomImpulse(multiplier) {
-    return [
-      (Math.round(Math.random()) * 2 - 1) * multiplier,
-      (Math.random() * 3) * multiplier,
-      (Math.round(Math.random()) * 2 - 1) * multiplier
-      ];
-  }
-
   function handleOnClick() {
     // handles expanding the mesh
     setExpand(!expand);
@@ -62,18 +55,10 @@ function MainMesh (props) {
     sphereApi.applyImpulse(randomImpulse, [0, 0, 0]);
   }
 
-
-  // TODO: Make this into a helper func, export it to its own file,
-  // Helper Functions file, then use it
-  // Creates 2 Arrays, one with the file names,
-  // the other with the Paths
-  let AvailableTextures = [];
-  let AvailableTexturesPaths = [];
-  for(let value of textureArr){
-    AvailableTextures.push(value.name + "Texture");
-    AvailableTexturesPaths.push(process.env.PUBLIC_URL + value.fileName);
-  }
-  AvailableTextures = useTexture(AvailableTexturesPaths);
+  // GET TEXTURES AND INIT THEM
+  let textureContents = getAvailableTexturePaths(); // gets both the AvailableTextures output + their PATHS
+  let availableTextures = textureContents[0];
+  availableTextures = useTexture(textureContents[1]); 
 
   // Load Animations with spring
   const springProps = useSpring({
@@ -93,7 +78,7 @@ function MainMesh (props) {
         attach="material"
 
         map={
-          AvailableTextures[texture]
+          availableTextures[texture]
         }
 
         factor={0.3}
