@@ -1,11 +1,14 @@
+// React related Imports
 import React, { 
   useState, 
   // useRef 
 } from "react";
+
+// react three fiber drei spring cannon
 // import { 
 //   useFrame, 
 //   useThree
-//  } from "@react-three/fiber";
+// } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 import { 
@@ -13,12 +16,15 @@ import {
   // useCylinder, 
   useSphere, 
   // useConeTwistConstraint
- } from "@react-three/cannon";
+} from "@react-three/cannon";
 
+// Helper Func
 import { 
   getAvailableTexturePaths,
   getRandomImpulse,  
 } from "./Utils";
+
+// Zustand states
 import { useStore } from "../../redux/store/ZustandStore";
 
 function MainMesh (props) {

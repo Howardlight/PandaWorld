@@ -1,11 +1,14 @@
+// React related Imports
 import React, { 
   useState, 
   // useRef 
 } from "react";
+
+// react three fiber drei spring cannon
 // import { 
 //   useFrame, 
 //   useThree
-//  } from "@react-three/fiber";
+// } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 import { 
@@ -13,15 +16,16 @@ import {
   // useCylinder, 
   // useSphere, 
   // useConeTwistConstraint
- } from "@react-three/cannon";
+} from "@react-three/cannon";
 
-
+// Helper Func
 import { 
   getAvailableTexturePaths,
   getRandomImpulse,
 } from "./Utils";
-import { useStore } from "../../redux/store/ZustandStore";
 
+// Zustand states
+import { useStore } from "../../redux/store/ZustandStore";
 
 function BoxMesh (props) {
   // Gets relevant states from Zustand
@@ -48,6 +52,7 @@ function BoxMesh (props) {
   // useFrame(() => {
   // });
 
+  // NOTE: cannot export funcs that rely on react components/hooks
   function handleOnClick() {
     // handles expanding the mesh
     setExpand(!expand);
