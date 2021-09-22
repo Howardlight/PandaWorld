@@ -2,10 +2,10 @@ import React, {
   useState, 
   // useRef 
 } from "react";
-import { 
-  useFrame, 
-  // useThree
- } from "@react-three/fiber";
+// import { 
+//   useFrame, 
+//   useThree
+//  } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 import { 
