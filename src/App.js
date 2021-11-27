@@ -6,7 +6,7 @@ import './App.scss';
 import MainCanvas from './MainCanvas/MainCanvas';
 import Header from './Header/Header';
 import Footer from "./Footer/Footer";
-import SlideBar from "./Menu/SlideBar";
+// import SlideBar from "./Menu/SlideBar";
 
 // AUDIO AND MUSIC RELATED
 // import useSound from 'use-sound';
@@ -14,11 +14,17 @@ import SlideBar from "./Menu/SlideBar";
 
 function App() {
   
+  // PHASED OUT //
+  
   // OPENING/CLOSING MENU STATE AND TOGGLE
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  }
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const toggleMenu = () => {
+  //   setIsMenuOpen(!isMenuOpen);
+  // }
+
+  // TODO: remove slidebar Code when ready
+  // REMOVE WHEN READY
+  // PHASED OUT //
 
   // BACKGROUND MUSIC
   // TODO: If possible port this into its own JS file
@@ -40,14 +46,16 @@ function App() {
   //TODO: REDO THE USER INTERFACE
   return (
     <>
-      <Header toggleMenu={toggleMenu}/> 
+      <Header 
+      // toggleMenu={toggleMenu}
+      /> 
 
       {/* {playBackMusic()} */}
 
-      <SlideBar
+      {/* <SlideBar
       isMenuOpen={isMenuOpen} 
       toggleMenu={toggleMenu}       
-      />
+      /> */}
 
       <Footer />
       <MainCanvas />
