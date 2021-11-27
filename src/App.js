@@ -1,5 +1,8 @@
 // REACT RELATED
-import React, { useState } from 'react';
+import {
+  React,
+  // useState
+  } from 'react';
 import './App.scss';
 
 // MAIN SCRIPTS
