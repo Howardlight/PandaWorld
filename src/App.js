@@ -9,8 +9,8 @@ import Header from './Header/Header';
 import SlideBar from "./Menu/SlideBar";
 
 // AUDIO AND MUSIC RELATED
-import useSound from 'use-sound';
-import BackgroundMusic from "./Assets/audio/bm.mp3";
+// import useSound from 'use-sound';
+// import BackgroundMusic from "./Assets/audio/bm.mp3";
 
 function App() {
   
@@ -26,10 +26,10 @@ function App() {
   // USE AUDACITY
   // Docs for useSound: https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/
   // TODO: Add a mute button
-  const [playBackMusic] = useSound(
-    BackgroundMusic,
-    { volume: 0.01 }
-  );
+  // const [playBackMusic] = useSound(
+  //   BackgroundMusic,
+  //   { volume: 0.01 }
+  // );
 
   //TODO: add sound effects,
   // Places where Sound effects can be added: 
@@ -42,7 +42,7 @@ function App() {
     <>
       <Header toggleMenu={toggleMenu}/> 
 
-      {playBackMusic()}
+      {/* {playBackMusic()} */}
 
       <SlideBar
       isMenuOpen={isMenuOpen} 
