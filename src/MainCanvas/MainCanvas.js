@@ -16,7 +16,7 @@ import Light from "./Light";
 // import MainMesh from "./ObjectMesh/MainMesh";
 import BoxMesh from "./ObjectMesh/BoxMesh";
 import SphereMesh from "./ObjectMesh/SphereMesh";
-// import CylinderMesh from "./ObjectMesh/CylinderMesh";
+import CylinderMesh from "./ObjectMesh/CylinderMesh";
 
 // Zustand, handles isHidden State
 import { useStore } from "../redux/store/ZustandStore";
@@ -58,8 +58,8 @@ const MainCanvas = () => {
         return isHidden ? "" : <BoxMesh args={[2, 2, 2]} position={[0, 10, 0]} />;
       case 1:
         return isHidden ? "" : <SphereMesh args={[2, 2, 2]} position={[0, 10, 0]} />;
-      // case 3:
-      //   return isHidden ? "" : <CylinderMesh args={[2, 2, 2]} position={[0, 10, 0]} />;
+      case 2:
+        return isHidden ? "" : <CylinderMesh args={[2, 2, 2]} position={[0, 10, 0]} />;
       default:
         return "";
     }
