@@ -42,7 +42,18 @@ const Footer = () => {
         setTextureStateButtonName(textureArr[handleTextureStateButtonName(texture)].name);
     }
 
+    const handleShapeState = () => {
+        // ONCLICK will increment shape state by 1
+        // if reached last possible choice, restart to 0
+        if(shape === Shapes.length - 1){
+            setToShape(0);
+        } else setToShape(shape+1);
 
+        // changes name of button to reflect CURRENT shape;
+        setShapeStateButtonName(Shapes[handleShapeStateButtonName(shape)]);
+    }
+
+    
     const handleTextureStateButtonName = (texture) => {
         //TODO: Maybe abstract this func and the shape one to only one function, they are very
         // similar
@@ -54,17 +65,6 @@ const Footer = () => {
         //  will give -1, and 4, which are invalid array indexes
         if(texture === textureArr.length - 1) return 0;
         return texture+1;
-    }
-
-    const handleShapeState = () => {
-        // ONCLICK will increment shape state by 1
-        // if reached last possible choice, restart to 0
-        if(shape === Shapes.length - 1){
-            setToShape(0);
-        } else setToShape(shape+1);
-
-        // changes name of button to reflect CURRENT shape;
-        setShapeStateButtonName(Shapes[handleShapeStateButtonName(shape)]);
     }
 
     const handleShapeStateButtonName = (shape) => {
@@ -79,7 +79,6 @@ const Footer = () => {
     // TODO: Add night time button, adds Stars, removes sun, darkens light emitters
     // TIP: Use Leva or react-three/gui
     // All components that will act as a UI MUST be overlapped over the canvas
-
     return(
         <footer className={classes.Footer}>
             <button onClick={handleIsHidden}>{isHidden ? "Show" : "Hide"}</button>
