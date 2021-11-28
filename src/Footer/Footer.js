@@ -72,7 +72,7 @@ const Footer = () => {
         // WHY: this is to give the array a valid index
         //  otherwise it would cause an error, as clicking the button til the loop
         //  will give -1, and 4, which are invalid array indexes
-        if(shape === 7) return 0;
+        if(shape === 1) return 0;
         else return shape+1;
     }
 
