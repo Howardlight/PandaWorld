@@ -1,4 +1,5 @@
-# Apanda World
+# Pandah World
+![Pandah Image](https://github.com/Howardlight/PandahWorld/blob/master/public/CustomFacicon.png)
 
 Work in Progress
 
