@@ -12,7 +12,7 @@ const Header = (
                 {/* <button onClick={toggleMenu}>Options</button> */}
                 <h4>Pandah World</h4>
             </div>
-            <h4>By Ciel</h4>
+            {/* <h4>By Ciel</h4> */}
         </header>
     );
 }
