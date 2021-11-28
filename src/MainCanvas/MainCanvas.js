@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 
 // Three Fiber Drei Cannon Imports
 import { Canvas } from "@react-three/fiber";
-import { softShadows, OrbitControls, Sky } from "@react-three/drei";
+import { softShadows, OrbitControls, Sky, Stars} from "@react-three/drei";
 import { 
   Physics,
   usePlane,
@@ -87,22 +87,24 @@ const MainCanvas = () => {
         return isHidden ? "" : <BoxMesh args={[2, 2, 2]} position={[0, 10, 0]} />;
       case 1:
         return isHidden ? "" : <SphereMesh args={[2, 2, 2]} position={[0, 10, 0]} />;
-      case 3:
-        return isHidden ? "" : <CylinderMesh args={[2, 2, 2]} position={[0, 10, 0]} />;
+      // case 3:
+      //   return isHidden ? "" : <CylinderMesh args={[2, 2, 2]} position={[0, 10, 0]} />;
       default:
         return "";
     }
   }
 
   return (
-    <Canvas shadows colorManagement camera={{ position: [-5, 2, 10], fov: 60 }}>
+    <Canvas shadows colorManagement camera={{ position: [-10, 0, 0], fov: 65 }}>
 
       <fog attach="fog" args={['#f0f0f0', 20, 40]} />
       <group>
         <Physics>
           <Suspense fallback={null}>
-            <Plane />
-            {handleMeshLoading()}
+            {/* <Debug > */}
+              <Plane />
+              {handleMeshLoading()}
+            {/* </Debug> */}
           </Suspense>
         </Physics>
       </group>
