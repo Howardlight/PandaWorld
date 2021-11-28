@@ -16,7 +16,7 @@ import Light from "./Light";
 // import MainMesh from "./ObjectMesh/MainMesh";
 import BoxMesh from "./ObjectMesh/BoxMesh";
 import SphereMesh from "./ObjectMesh/SphereMesh";
-import CylinderMesh from "./ObjectMesh/CylinderMesh";
+// import CylinderMesh from "./ObjectMesh/CylinderMesh";
 
 // Zustand, handles isHidden State
 import { useStore } from "../redux/store/ZustandStore";
@@ -38,33 +38,6 @@ function Plane(props) {
   )
 }
 
-// OBJECTS FOR TESTING
-// function Cube(props) {
-//   const [ref] = useBox(() => ({ mass: 1, position: [0, 5, 0], ...props }))
-//   return (
-//     <mesh ref={ref}>
-//       <boxBufferGeometry />
-//     </mesh>
-//   )
-// }
-
-// function Marble() {
-//   const [ref] = useSphere(() => ({
-//     mass: 10,
-//     position: [2, 5, 0]
-//   }));
-
-//   return (
-//     <mesh ref={ref} castShadow>
-//       <sphereBufferGeometry
-//         attach="geometry"
-//         args={[1, 32, 32]}
-//       ></sphereBufferGeometry>
-//       <meshStandardMaterial color="white" />
-//     </mesh>
-//   );
-// }
-
 // Softens the Shadows
 softShadows();
 const MainCanvas = () => {
@@ -79,8 +52,6 @@ const MainCanvas = () => {
 
 
   // Swaps between the shapes
-  // TODO: Add Support for other Shapes
-  // TODO: Port this into helper funcs, this will get bigger soon
   function handleMeshLoading() {
     switch(shape) {
       case 0:
